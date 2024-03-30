@@ -1,8 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://b55lq43ap4vmb"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_5rins"]
-[ext_resource type="Script" path="res://areadetection.gd" id="3_cx4ai"]
-[ext_resource type="Script" path="res://Scripts/switch.gd" id="5_44yjj"]
+[ext_resource type="Script" path="res://main.gd" id="1_5rins"]
+[ext_resource type="Script" path="res://Scripts/rigidSwitch.gd" id="1_iat8e"]
+[ext_resource type="Script" path="res://Scripts/staticSwitch.gd" id="3_uqmxy"]
+[ext_resource type="Script" path="res://Scripts/characterSwitch.gd" id="4_eqrss"]
+[ext_resource type="Script" path="res://switch.gd" id="5_44yjj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +24,10 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_asxfx"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
 
 [sub_resource type="GDScript" id="GDScript_250fg"]
 script/source = "extends CharacterBody3D
@@ -61,21 +67,13 @@ func _physics_process(delta):
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5sgiy"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5lcpp"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ssuq"]
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_jvt0p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xr5qu"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5lcpp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jxu78"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pefn5"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ssuq"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_5rins")
@@ -94,13 +92,35 @@ shape = SubResource("BoxShape3D_asxfx")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.904142, 0.427232, 0, -0.427232, 0.904142, 0, 1.82065, 5.54548)
 
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, 1.03606, 0)
+script = ExtResource("1_iat8e")
+is_dark = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_7jck8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_yvxy5")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822174, 1.02029, 0)
+script = ExtResource("1_iat8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_7jck8")
+skeleton = NodePath("../../RigidBody3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_yvxy5")
+
 [node name="Label" type="Label" parent="."]
 offset_right = 374.0
 offset_bottom = 148.0
 theme_override_font_sizes/font_size = 60
 text = "Light"
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59213, 3.9059)
 script = SubResource("GDScript_250fg")
 
@@ -110,63 +130,28 @@ mesh = SubResource("CapsuleMesh_lkry1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_5sgiy")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20944, 1.63321, 0)
+script = ExtResource("3_uqmxy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("CylinderMesh_jvt0p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("CylinderShape3D_xr5qu")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59279, -2.24835)
+disable_mode = 1
+script = ExtResource("4_eqrss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+mesh = SubResource("CapsuleMesh_5lcpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+shape = SubResource("CapsuleShape3D_4ssuq")
+
 [node name="Light" type="Node3D" parent="."]
 script = ExtResource("5_44yjj")
 
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59279, -2.24835)
-disable_mode = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Light/CharacterBody3D2"]
-mesh = SubResource("CapsuleMesh_5lcpp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Light/CharacterBody3D2"]
-shape = SubResource("CapsuleShape3D_4ssuq")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20944, 1.63321, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Light/StaticBody3D2"]
-mesh = SubResource("CylinderMesh_jvt0p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Light/StaticBody3D2"]
-shape = SubResource("CylinderShape3D_xr5qu")
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822174, 1.02029, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Light/RigidBody3D2"]
-mesh = SubResource("BoxMesh_7jck8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Light/RigidBody3D2"]
-shape = SubResource("BoxShape3D_yvxy5")
-
-[node name="Area3D" type="Area3D" parent="Light/RigidBody3D2" groups=["DNE"]]
-script = ExtResource("3_cx4ai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Light/RigidBody3D2/Area3D" groups=["DNE"]]
-shape = SubResource("BoxShape3D_jxu78")
-
 [node name="Dark" type="Node3D" parent="."]
-script = ExtResource("5_44yjj")
-is_dark = true
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Dark"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, 1.03606, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Dark/RigidBody3D"]
-mesh = SubResource("BoxMesh_7jck8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/RigidBody3D"]
-shape = SubResource("BoxShape3D_yvxy5")
-
-[node name="Area3D" type="Area3D" parent="Dark/RigidBody3D" groups=["DNE"]]
-script = ExtResource("3_cx4ai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/RigidBody3D/Area3D" groups=["DNE"]]
-shape = SubResource("BoxShape3D_pefn5")
-
-[connection signal="body_entered" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_exited"]
-[connection signal="body_entered" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_exited"]

@@ -12,8 +12,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("switch"):
-		if global_vars.dark_world:
-			label.text = "Light"
-		else:
-			label.text = "Dark"
-		global_vars.dark_world = not global_vars.dark_world
+		if global_vars.can_switch == true:
+			if global_vars.dark_world:
+				label.text = "Light"
+			else:
+				label.text = "Dark"
+			global_vars.dark_world = not global_vars.dark_world
