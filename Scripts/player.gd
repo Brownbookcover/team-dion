@@ -56,10 +56,10 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 50
 		
-	#Uncomment out later, Alec's env stuff
-	#if global_vars.dark_world == true:
-	#	camera.environment = Dark_World_Env
-	#else:
-	#	camera.environment = Light_World_Env
+	# Uncomment out later, Alec's env stuff
+	if global_vars.dark_world == true:
+		camera.environment = Dark_World_Env
+	else:
+		camera.environment = Light_World_Env
 
 	move_and_slide()
