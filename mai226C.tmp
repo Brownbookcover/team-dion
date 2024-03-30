@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=25 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_5rins"]
-[ext_resource type="PackedScene" uid="uid://b6iq546t8vyef" path="res://Scenes/Player.tscn" id="2_rssb4"]
-[ext_resource type="Script" path="res://Scripts/areadetection.gd" id="3_cx4ai"]
+[ext_resource type="Script" path="res://player.gd" id="2_qpds1"]
+[ext_resource type="Script" path="res://areadetection.gd" id="3_cx4ai"]
 [ext_resource type="Script" path="res://Scripts/switch.gd" id="5_44yjj"]
 [ext_resource type="PackedScene" uid="uid://dy6jd6a04dyuy" path="res://dialog/actionables.tscn" id="5_mttfc"]
 [ext_resource type="Resource" uid="uid://b15sorqd7dt1i" path="res://dialog/main.dialogue" id="6_d2ehk"]
@@ -26,6 +26,10 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_asxfx"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lkry1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5sgiy"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5lcpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ssuq"]
@@ -42,12 +46,12 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pefn5"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xr0am"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w0js1"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljcmh"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8tgx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ng61n"]
-size = Vector3(1, 1, 1.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n12i"]
+size = Vector3(1, 1, 1.52844)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_5rins")
@@ -69,7 +73,26 @@ offset_bottom = 148.0
 theme_override_font_sizes/font_size = 60
 text = "Light"
 
-[node name="Player" parent="." instance=ExtResource("2_rssb4")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59213, 3.9059)
+script = ExtResource("2_qpds1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_lkry1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_5sgiy")
+
+[node name="Neck" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36207, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Neck"]
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Light" type="Node3D" parent="."]
 script = ExtResource("5_44yjj")
@@ -128,21 +151,20 @@ script = ExtResource("3_cx4ai")
 shape = SubResource("BoxShape3D_pefn5")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Dark"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05109, 1.46862, -4.26797)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Dark/CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_xr0am")
+mesh = SubResource("CapsuleMesh_w0js1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_ljcmh")
+shape = SubResource("CapsuleShape3D_y8tgx")
 
-[node name="Actionables2" parent="Dark/CharacterBody3D" instance=ExtResource("5_mttfc")]
+[node name="Actionables" parent="Dark/CharacterBody3D" instance=ExtResource("5_mttfc")]
 dialog_resource = ExtResource("6_d2ehk")
-dialog_start = "alec"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/CharacterBody3D/Actionables2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
-shape = SubResource("BoxShape3D_ng61n")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/CharacterBody3D/Actionables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.76633)
+shape = SubResource("BoxShape3D_3n12i")
 
 [connection signal="body_entered" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_exited"]

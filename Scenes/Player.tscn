@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6iq546t8vyef"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_r7ryw"]
+[ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="2_r3wsa"]
+[ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="3_la5ap"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tfv7x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynix2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7scuj"]
+render_priority = -1
+shader = ExtResource("2_r3wsa")
+shader_parameter/distortion_strength = 0.017
+shader_parameter/distortion_scale = 19.421
+shader_parameter/normal_map = ExtResource("3_la5ap")
+
+[sub_resource type="QuadMesh" id="QuadMesh_44d8l"]
+size = Vector2(4, 4)
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59213, 3.9059)
+script = ExtResource("1_r7ryw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tfv7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ynix2")
+
+[node name="Neck" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36207, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Neck/Camera3D"]
+transform = Transform3D(1.43308, 0, -2.98023e-08, 6.67329e-10, 1, 0, 4.2709e-08, 0, 1, 0, -0.00581467, -0.56827)
+material_override = SubResource("ShaderMaterial_7scuj")
+mesh = SubResource("QuadMesh_44d8l")
+skeleton = NodePath("../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck"]
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
