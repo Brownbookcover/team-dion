@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+signal pause
+signal unpause
+var is_paused: bool = false
 
 const SPEED = 2
 const JUMP_VELOCITY = 4.5
@@ -18,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var actionable_finder: RayCast3D = $Neck/RayCast3D
 
+
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
@@ -28,8 +32,10 @@ func _unhandled_input(event):
 			return
 	
 	if event is InputEventMouseButton:
+		#unpause.emit()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
+		#pause.emit()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
