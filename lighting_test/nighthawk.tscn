@@ -1,18 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://85a6rupdhemo"]
 
 [ext_resource type="PackedScene" uid="uid://fo2uu0obflj7" path="res://art/nighthawk.glb" id="1_8fgrd"]
+[ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="2_r8xm2"]
 [ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="2_x017c"]
 [ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="3_aii6d"]
-
-[sub_resource type="Environment" id="Environment_w60i5"]
-background_mode = 1
-background_color = Color(0.0823529, 0.113725, 0.121569, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.223529, 0.243137, 0.290196, 1)
-tonemap_mode = 3
-fog_enabled = true
-fog_light_color = Color(0.117647, 0.164706, 0.25098, 1)
-fog_density = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oj1bl"]
 render_priority = -1
@@ -37,10 +28,10 @@ light_energy = 100.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_w60i5")
+environment = ExtResource("2_r8xm2")
 
 [node name="Camera2" type="Camera3D" parent="."]
-transform = Transform3D(0.744312, -0.023307, -0.667426, 0, 0.999391, -0.0348995, 0.667833, 0.0259761, 0.743858, -120.767, 32.91, 115.623)
+transform = Transform3D(0.744312, -0.023307, -0.667426, 0, 0.999391, -0.0348995, 0.667833, 0.0259761, 0.743858, -119.762, 30.99, 113.903)
 fov = 22.8952
 near = 0.1
 far = 1000.0
