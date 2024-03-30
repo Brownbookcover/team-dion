@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://85a6rupdhemo"]
+
+[ext_resource type="PackedScene" uid="uid://fo2uu0obflj7" path="res://art/nighthawk.glb" id="1_8fgrd"]
+[ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="2_x017c"]
+[ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="3_aii6d"]
+
+[sub_resource type="Environment" id="Environment_w60i5"]
+background_mode = 1
+background_color = Color(0.0823529, 0.113725, 0.121569, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.223529, 0.243137, 0.290196, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.117647, 0.164706, 0.25098, 1)
+fog_density = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj1bl"]
+render_priority = -1
+shader = ExtResource("2_x017c")
+shader_parameter/distortion_strength = 0.023
+shader_parameter/normal_map = ExtResource("3_aii6d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uyuca"]
+
+[node name="Nighthawk" type="Node3D"]
+
+[node name="nighthawk" parent="." instance=ExtResource("1_8fgrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.0106, 23.8664, 32.9016)
+
+[node name="Sun" parent="nighthawk" index="8"]
+transform = Transform3D(0.994219, 0.0164551, 0.106105, -0.107163, 0.090224, 0.990139, 0.00671966, -0.995786, 0.0914658, -1.02379, 31.228, -1.09988)
+light_energy = 0.808
+shadow_enabled = true
+
+[node name="Point" parent="nighthawk" index="9"]
+light_energy = 100.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w60i5")
+
+[node name="Camera2" type="Camera3D" parent="."]
+transform = Transform3D(0.744312, -0.023307, -0.667426, 0, 0.999391, -0.0348995, 0.667833, 0.0259761, 0.743858, -120.767, 32.91, 115.623)
+fov = 22.8952
+near = 0.1
+far = 1000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera2"]
+transform = Transform3D(1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1.369)
+material_override = SubResource("ShaderMaterial_oj1bl")
+mesh = SubResource("QuadMesh_uyuca")
+
+[editable path="nighthawk"]
