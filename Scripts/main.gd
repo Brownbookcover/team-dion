@@ -1,27 +1,36 @@
-extends Node3D
+extends Node
 
-@onready var label = $Label
-
-@onready var global_vars = get_node("/root/Globals")
-
-@onready var alec = $Dark/CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$MainMenu.visible = true
+	$PauseMenu.visible = false
+	$main.visible = false
+	$main/Label.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Globals.alec_died == true:
-		print("Alec Died")		
-		Globals.alec_died = false
-		alec.queue_free()
-	
-	if Input.is_action_just_pressed("switch"):
-		if global_vars.can_switch == true:
-			if global_vars.dark_world:
-				label.text = "Light"
-			else:
-				label.text = "Dark"
-			global_vars.dark_world = not global_vars.dark_world
+	pass
+
+
+func _on_main_menu_game_start():
+	$MainMenu.visible = false
+	$PauseMenu.visible = false
+	$main.visible = true
+	$main/Label.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_player_pause():
+	$MainMenu.visible = false
+	$PauseMenu.visible = true
+	$main.visible = false
+	$main/Label.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_player_unpause():
+	$MainMenu.visible = false
+	$PauseMenu.visible = false
+	$main.visible = true
+	$main/Label.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

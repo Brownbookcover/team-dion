@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxwt1cgnpgn3w"]
+
+[ext_resource type="Script" path="res://Scenes/mainMenu.gd" id="1_5i15e"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5i15e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 646.0
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -212.0
+offset_right = 116.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Game"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -423.5
+offset_top = -435.5
+offset_right = 423.5
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/bold_italics_font_size = 0
+theme_override_font_sizes/mono_font_size = 0
+bbcode_enabled = true
+text = "[center]Team Dion (minus Dion) Presents:
+[b] [color=Black] The Darkest Corner of the World [/color] [/b] [/center]"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
