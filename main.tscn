@@ -70,6 +70,7 @@ theme_override_font_sizes/font_size = 60
 text = "Light"
 
 [node name="Player" parent="." instance=ExtResource("2_rssb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91606, 3.9059)
 
 [node name="Light" type="Node3D" parent="."]
 script = ExtResource("5_44yjj")
