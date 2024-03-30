@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctn50airj7xqf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i1tdm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrsqx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_47c2q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nw1pt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ua32l"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_atpce"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8v8lv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxq8t"]
+
+[node name="Toss" type="Node3D"]
+
+[node name="Man" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_i1tdm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Man"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Man/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_mrsqx")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.408459, 0, 0, 0, 0.408459, 0, 0, 0, 0.408459, 0, 0.615688, -2.10701)
+mesh = SubResource("SphereMesh_47c2q")
+skeleton = NodePath("../Dog")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Ball"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_nw1pt")
+
+[node name="Dog" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.933167, 0, -0.359443, 0, 1, 0, 0.359443, 0, 0.933167, -1.71, -0.5, -1.19128)
+mesh = SubResource("BoxMesh_ua32l")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Dog"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_nw1pt")
+
+[node name="TeeBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.41394, 0, 0, 0, 1, 0, 0, 0, 4.70825, 0, -1, 0)
+mesh = SubResource("PlaneMesh_atpce")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TeeBox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TeeBox/StaticBody3D"]
+shape = SubResource("BoxShape3D_8v8lv")
+
+[node name="Fairway" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.15323, 0, 0, 0, 1, 0, 0, 0, 12.2162, 0, -1, -17.5729)
+mesh = SubResource("PlaneMesh_atpce")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fairway"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fairway/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000569294, 0.0208738, -0.00053823)
+shape = SubResource("BoxShape3D_fxq8t")
