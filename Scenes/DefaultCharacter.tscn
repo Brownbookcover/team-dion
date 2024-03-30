@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3degk0dd5pxc"]
+
+[ext_resource type="PackedScene" uid="uid://dy6jd6a04dyuy" path="res://dialog/actionables.tscn" id="1_s8gtv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0w4ln"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_km36w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yn3vw"]
+size = Vector3(1, 1, 1.2981)
+
+[node name="Character" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0w4ln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_km36w")
+
+[node name="Actionables" parent="." instance=ExtResource("1_s8gtv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Actionables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.64883)
+shape = SubResource("BoxShape3D_yn3vw")

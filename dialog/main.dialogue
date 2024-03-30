@@ -1,13 +1,21 @@
-~ start
+~ alec
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-
+if Globals.alec_first_talk == false:
+	Alec: My Name is Alec I am sad and dead
+	- Carry on
+		Alec: Okay! 
+		set Globals.alec_first_talk = true
+		set Globals.tried_dying = false
+		=> END
+else:
+	if Globals.tried_dying == false:
+		Alec: My name is still Alec and I am still very dead
+		- Try not being dead
+			Alec: Huh ive never thought of that let me try....... nope nothing
+			set Globals.tried_dying = true
+	elif Globals.tried_dying == true:
+		Alec: My name is still very much Alec and I am still very much dead
+		- Try dying again but for real this time
+			Alec: Okay here goes....... yep I died
+			set Globals.alec_died = true
 => END

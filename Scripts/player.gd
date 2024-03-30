@@ -21,8 +21,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
-		print(actionable)
+		#print(actionable)
 		if actionable != null:
+			input_vector = Vector3.ZERO
 			actionable.action()
 			return
 	
