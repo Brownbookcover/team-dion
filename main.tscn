@@ -1,9 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=28 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_5rins"]
 [ext_resource type="Script" path="res://player.gd" id="2_qpds1"]
 [ext_resource type="Script" path="res://areadetection.gd" id="3_cx4ai"]
 [ext_resource type="Script" path="res://Scripts/switch.gd" id="5_44yjj"]
+[ext_resource type="PackedScene" uid="uid://fo2uu0obflj7" path="res://art/nighthawk.glb" id="5_0751c"]
+[ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="6_m5042"]
+[ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="7_8npjb"]
+[ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="8_2ynn0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +32,16 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5sgiy"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78ptu"]
+render_priority = -1
+shader = ExtResource("7_8npjb")
+shader_parameter/distortion_strength = 0.003
+shader_parameter/distortion_scale = 19.421
+shader_parameter/normal_map = ExtResource("8_2ynn0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jyovn"]
+size = Vector2(4, 3)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5lcpp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ssuq"]
@@ -43,6 +57,15 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxu78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pefn5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj1bl"]
+render_priority = -1
+shader = ExtResource("7_8npjb")
+shader_parameter/distortion_strength = 0.003
+shader_parameter/distortion_scale = 19.421
+shader_parameter/normal_map = ExtResource("8_2ynn0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uyuca"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_5rins")
@@ -78,6 +101,11 @@ shape = SubResource("CapsuleShape3D_5sgiy")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36207, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Neck/Camera3D"]
+transform = Transform3D(1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1.369)
+material_override = SubResource("ShaderMaterial_78ptu")
+mesh = SubResource("QuadMesh_jyovn")
 
 [node name="Light" type="Node3D" parent="."]
 script = ExtResource("5_44yjj")
@@ -135,7 +163,40 @@ script = ExtResource("3_cx4ai")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dark/RigidBody3D/Area3D" groups=["DNE"]]
 shape = SubResource("BoxShape3D_pefn5")
 
+[node name="Nighthawk" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5883, -24.022, -33.6142)
+
+[node name="nighthawk" parent="Nighthawk" instance=ExtResource("5_0751c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.0106, 23.8664, 32.9016)
+
+[node name="Sun" parent="Nighthawk/nighthawk" index="8"]
+transform = Transform3D(0.994219, 0.0164551, 0.106105, -0.107163, 0.090224, 0.990139, 0.00671966, -0.995786, 0.0914658, -1.02379, 31.228, -1.09988)
+visible = false
+light_energy = 0.808
+shadow_enabled = true
+
+[node name="Point" parent="Nighthawk/nighthawk" index="9"]
+visible = false
+light_energy = 100.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Nighthawk"]
+environment = ExtResource("6_m5042")
+
+[node name="Camera2" type="Camera3D" parent="Nighthawk"]
+transform = Transform3D(0.744312, -0.023307, -0.667426, 0, 0.999391, -0.0348995, 0.667833, 0.0259761, 0.743858, -119.762, 30.99, 113.903)
+fov = 22.8952
+near = 0.1
+far = 1000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nighthawk/Camera2"]
+transform = Transform3D(1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1.369)
+material_override = SubResource("ShaderMaterial_oj1bl")
+mesh = SubResource("QuadMesh_uyuca")
+
 [connection signal="body_entered" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_exited"]
+
+[editable path="Nighthawk/nighthawk"]
