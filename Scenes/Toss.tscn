@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctn50airj7xqf"]
+[gd_scene load_steps=16 format=3 uid="uid://ctn50airj7xqf"]
 
 [ext_resource type="Script" path="res://Scripts/Toss/Toss.gd" id="1_de3x1"]
-[ext_resource type="Script" path="res://Scenes/TossManager.gd" id="1_j3nht"]
+[ext_resource type="Script" path="res://Scripts/Toss/TossManager.gd" id="1_j3nht"]
 [ext_resource type="Script" path="res://Scripts/Toss/DogFetch.gd" id="2_5rns1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1tdm"]
@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrsqx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lcmuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vx2w1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nw1pt"]
 radius = 0.2
@@ -27,7 +29,9 @@ height = 0.4
 size = Vector3(16.6123, 0.495117, 4.87988)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cf8j5"]
-size = Vector3(9.11353, 0.495117, 22.4883)
+size = Vector3(29.2477, 0.495117, 22.4883)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk4ql"]
 
 [node name="Toss" type="Node3D" node_paths=PackedStringArray("Ball")]
 script = ExtResource("1_j3nht")
@@ -48,6 +52,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615688, -1.1868)
 physics_material_override = SubResource("PhysicsMaterial_lcmuy")
 script = ExtResource("1_de3x1")
 
+[node name="Area3D" type="Area3D" parent="BallBody3D"]
+transform = Transform3D(0.774529, 0, -0.298338, 0, 0.83, 0, 0.298338, 0, 0.774529, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallBody3D/Area3D"]
+shape = SubResource("BoxShape3D_vx2w1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallBody3D"]
 shape = SubResource("SphereShape3D_nw1pt")
 
@@ -55,11 +65,15 @@ shape = SubResource("SphereShape3D_nw1pt")
 mesh = SubResource("SphereMesh_47c2q")
 skeleton = NodePath("../../DogBody3D/Dog")
 
-[node name="DogBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("Manager", "Ball")]
-transform = Transform3D(0.933167, 0, -0.359443, 0, 1, 0, 0.359443, 0, 0.933167, -1.71, -0.5, -1.19128)
+[node name="DogBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("Manager", "Ball", "DogReturnArea")]
+transform = Transform3D(0.933167, 0, -0.359443, 0, 1, 0, 0.359443, 0, 0.933167, -6.49159, -0.5, -5.54223)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("2_5rns1")
 Manager = NodePath("..")
 Ball = NodePath("../BallBody3D")
+DogReturnArea = NodePath("../DogReturnArea3D")
 
 [node name="Dog" type="MeshInstance3D" parent="DogBody3D"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
@@ -85,17 +99,26 @@ shape = SubResource("BoxShape3D_b0s0a")
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -13.5596)
 
-[node name="Fairway" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(9.13055, 0, 0, 0, 0.5, 0, 0, 0, 22.3876, 0, -0.25, -0.216)
-mesh = SubResource("BoxMesh_ryiwr")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29852, -0.25, -0.216)
 shape = SubResource("BoxShape3D_cf8j5")
 
+[node name="Fairway" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D"]
+transform = Transform3D(28.4256, 0, 0, 0, 0.5, 0, 0, 0, 22.3876, 0, 0, 0)
+mesh = SubResource("BoxMesh_ryiwr")
+skeleton = NodePath("../../..")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00213253, 0.657076, 0.761667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0916707, 0.657076, 0.824889)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.883766, 0.46793, 0, -0.46793, 0.883766, 0, 3.97536, 0)
+
+[node name="DogReturnArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21277, 0, -4.11039)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DogReturnArea3D"]
+shape = SubResource("BoxShape3D_gk4ql")
+
+[connection signal="body_entered" from="BallBody3D/Area3D" to="DogBody3D" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="DogReturnArea3D" to="DogBody3D" method="_on_dog_return_area_3d_body_entered"]
