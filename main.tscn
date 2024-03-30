@@ -1,0 +1,151 @@
+[gd_scene load_steps=19 format=3 uid="uid://b55lq43ap4vmb"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_5rins"]
+[ext_resource type="Script" path="res://Scripts/rigidSwitch.gd" id="1_iat8e"]
+[ext_resource type="Script" path="res://Scripts/staticSwitch.gd" id="3_uqmxy"]
+[ext_resource type="Script" path="res://Scripts/characterSwitch.gd" id="4_eqrss"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7fyis"]
+sky_material = SubResource("ProceduralSkyMaterial_5fif8")
+
+[sub_resource type="Environment" id="Environment_ta0qc"]
+background_mode = 2
+sky = SubResource("Sky_7fyis")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5gxk"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_asxfx"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
+
+[sub_resource type="GDScript" id="GDScript_250fg"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lkry1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5sgiy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jvt0p"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xr5qu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5lcpp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ssuq"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_5rins")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ta0qc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_u5gxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_asxfx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.904142, 0.427232, 0, -0.427232, 0.904142, 0, 1.82065, 5.54548)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, 1.03606, 0)
+script = ExtResource("1_iat8e")
+is_dark = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_7jck8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_yvxy5")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822174, 1.02029, 0)
+script = ExtResource("1_iat8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_7jck8")
+skeleton = NodePath("../../RigidBody3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_yvxy5")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 374.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 60
+text = "Light"
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59213, 3.9059)
+script = SubResource("GDScript_250fg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_lkry1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_5sgiy")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20944, 1.63321, 0)
+script = ExtResource("3_uqmxy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("CylinderMesh_jvt0p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("CylinderShape3D_xr5qu")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59279, -2.24835)
+disable_mode = 1
+script = ExtResource("4_eqrss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+mesh = SubResource("CapsuleMesh_5lcpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+shape = SubResource("CapsuleShape3D_4ssuq")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b55lq43ap4vmb"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_5rins"]
+[ext_resource type="Script" path="res://layer.gd" id="1_iat8e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7fyis"]
+sky_material = SubResource("ProceduralSkyMaterial_5fif8")
+
+[sub_resource type="Environment" id="Environment_ta0qc"]
+background_mode = 2
+sky = SubResource("Sky_7fyis")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5gxk"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_asxfx"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_5rins")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ta0qc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_u5gxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_asxfx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.904142, 0.427232, 0, -0.427232, 0.904142, 0, 1.82065, 5.54548)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, 1.03606, 0)
+script = ExtResource("1_iat8e")
+is_dark = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_7jck8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_yvxy5")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822174, 1.02029, 0)
+script = ExtResource("1_iat8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_7jck8")
+skeleton = NodePath("../../RigidBody3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_yvxy5")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 374.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 60
+text = "Light"
