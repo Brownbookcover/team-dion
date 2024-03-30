@@ -71,11 +71,6 @@ text = "Light"
 
 [node name="Player" parent="." instance=ExtResource("2_rssb4")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Neck/Camera3D"]
-transform = Transform3D(1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1.369)
-material_override = SubResource("ShaderMaterial_78ptu")
-mesh = SubResource("QuadMesh_jyovn")
-
 [node name="Light" type="Node3D" parent="."]
 script = ExtResource("5_44yjj")
 
@@ -153,5 +148,3 @@ shape = SubResource("BoxShape3D_ng61n")
 [connection signal="body_exited" from="Light/RigidBody3D2/Area3D" to="Light/RigidBody3D2/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Dark/RigidBody3D/Area3D" to="Dark/RigidBody3D/Area3D" method="_on_body_exited"]
-
-[editable path="Nighthawk/nighthawk"]

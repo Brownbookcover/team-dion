@@ -1,20 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://85a6rupdhemo"]
+[gd_scene load_steps=11 format=3 uid="uid://85a6rupdhemo"]
 
 [ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="2_r8xm2"]
-[ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="2_x017c"]
-[ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="3_aii6d"]
 [ext_resource type="PackedScene" uid="uid://5cvfjemb1qjn" path="res://art/genericbuildings.glb" id="4_y6wvf"]
 [ext_resource type="PackedScene" uid="uid://ba2vnxtmwpbqf" path="res://art/cornerstore.glb" id="5_p8d66"]
 [ext_resource type="PackedScene" uid="uid://d01pe4fklbf8n" path="res://art/diner.glb" id="6_bstc8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj1bl"]
-render_priority = -1
-shader = ExtResource("2_x017c")
-shader_parameter/distortion_strength = 0.006
-shader_parameter/distortion_scale = 19.421
-shader_parameter/normal_map = ExtResource("3_aii6d")
-
-[sub_resource type="QuadMesh" id="QuadMesh_uyuca"]
+[ext_resource type="PackedScene" uid="uid://b6iq546t8vyef" path="res://Scenes/Player.tscn" id="7_jsjfq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbhky"]
 transparency = 1
@@ -65,17 +55,6 @@ size = Vector3(1000, 1, 1000)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_r8xm2")
 
-[node name="Camera2" type="Camera3D" parent="."]
-transform = Transform3D(0.744312, -0.023307, -0.667426, 0, 0.999391, -0.0348995, 0.667833, 0.0259761, 0.743858, -10.098, 2.205, 27.914)
-fov = 22.8952
-near = 0.1
-far = 1000.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera2"]
-transform = Transform3D(1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1.369)
-material_override = SubResource("ShaderMaterial_oj1bl")
-mesh = SubResource("QuadMesh_uyuca")
-
 [node name="genericbuildings" parent="." instance=ExtResource("4_y6wvf")]
 
 [node name="cornerstore" parent="." instance=ExtResource("5_p8d66")]
@@ -116,5 +95,7 @@ light_indirect_energy = 0.0
 shadow_enabled = true
 omni_range = 27.344
 omni_attenuation = 0.34151
+
+[node name="Player" parent="." instance=ExtResource("7_jsjfq")]
 
 [editable path="diner2"]
