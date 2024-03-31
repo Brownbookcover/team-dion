@@ -34,7 +34,7 @@ func _unhandled_input(event):
 			return
 			
 	if Input.is_action_just_pressed("Throw"):
-		if Globals.catches <= 2:
+		if Globals.catches <= 2 and Globals.dark_world == false:
 			if Globals.start_tossing == true and Globals.ball_thrown == false:
 				Globals.ball_thrown = true
 				var instance = ball.instantiate()

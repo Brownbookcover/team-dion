@@ -19,9 +19,9 @@ var ball_thrown: bool = false
 var catches: int = 0
 
 # Dog:
-var has_met_dogman: bool = false
+var has_met_dogman: bool = true
 var has_tuna: bool = false
-var has_fed: bool = false
+var has_fed: bool = true
 var played_fetch: bool = false
 var dog_has_new_owner: bool = false
 var ended_dogman_quest: bool = false

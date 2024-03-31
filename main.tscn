@@ -716,6 +716,19 @@ shape = SubResource("BoxShape3D_jxu78")
 [node name="Dog" parent="main/Light" instance=ExtResource("8_wty0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62133, 1.19977, 0)
 
+[node name="Dog2" parent="main/Light/Dog" instance=ExtResource("5_mttfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12295, -0.372986, -0.0763021)
+dialog_resource = ExtResource("18_d1rfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog/Dog2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
+shape = SubResource("BoxShape3D_cjikv")
+
+[node name="staticbody" type="StaticBody3D" parent="main/Light/Dog/Dog2"]
+
+[node name="stool" parent="main/Light/Dog/Dog2/staticbody" instance=ExtResource("19_4mtly")]
+transform = Transform3D(0.478002, 1.32612e-10, 0, 1.74623e-10, 0.370348, 1.15667e-08, 0, -2.03692e-08, 0.37088, 0, -0.62045, -0.0497597)
+
 [node name="people" type="Node3D" parent="main/Light"]
 
 [node name="posed_stool_man" parent="main/Light/people" instance=ExtResource("10_ehmg3")]
@@ -807,22 +820,6 @@ transform = Transform3D(0.00740887, 0, -0.45494, 0, 0.455, 0, 0.45494, 0, 0.0074
 
 [node name="bench_man" parent="main/Light/Mike/staticbody/bench_man2" index="0"]
 mesh = SubResource("ArrayMesh_1jwuy")
-
-[node name="Dog2" parent="main/Light" instance=ExtResource("5_mttfc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.765597, 0.826784, 14.064)
-dialog_resource = ExtResource("18_d1rfq")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
-shape = SubResource("BoxShape3D_cjikv")
-
-[node name="staticbody" type="StaticBody3D" parent="main/Light/Dog2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog2/staticbody"]
-shape = SubResource("CapsuleShape3D_1evht")
-
-[node name="stool" parent="main/Light/Dog2/staticbody" instance=ExtResource("19_4mtly")]
-transform = Transform3D(0.478002, 1.32612e-10, 0, 1.74623e-10, 0.370348, 1.15667e-08, 0, -2.03692e-08, 0.37088, 0, -0.62045, -0.0497597)
 
 [node name="Dogboy" parent="main/Light" instance=ExtResource("5_mttfc")]
 transform = Transform3D(-0.155366, 0, -0.987857, 0, 1, 0, 0.987857, 0, -0.155366, 1.59508, 1.44867, 11.8916)

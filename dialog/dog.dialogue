@@ -3,9 +3,13 @@
 Jack: Woof!
 - Hello!
 	Jack: Woof!
-	=> start
 - [[Who's a good boy?|What's on your mind, Jack?|]]
 	Jack: Woof!
-	=> start
+if Globals.has_met_dogman == true and Globals.has_fed == true:
+	- Wanna play fetch?
+		Jack: Woof!
+		set Globals.start_tossing = true
+		=> END
+=> start
 
 => END
