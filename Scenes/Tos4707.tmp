@@ -73,5 +73,3 @@ shape = SubResource("CapsuleShape3D_mmq46")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Dog"]
 
 [connection signal="ball_thrown" from="Player" to="Dog" method="_on_player_ball_thrown"]
-[connection signal="ball_found" from="Dog" to="." method="_on_dog_ball_found"]
-[connection signal="player_met" from="Dog" to="." method="_on_dog_player_met"]

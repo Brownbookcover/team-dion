@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://qpyxd0mao578"]
+[gd_scene load_steps=5 format=3 uid="uid://qpyxd0mao578"]
 
 [ext_resource type="Script" path="res://Scenes/MovingBall.gd" id="1_cpgvl"]
 
@@ -9,7 +9,10 @@ height = 0.2
 [sub_resource type="SphereShape3D" id="SphereShape3D_x1dwa"]
 radius = 0.1
 
-[node name="MovingBall" type="RigidBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_qx8o2"]
+radius = 0.2
+
+[node name="MovingBall" type="RigidBody3D" groups=["ball"]]
 script = ExtResource("1_cpgvl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -17,3 +20,19 @@ mesh = SubResource("SphereMesh_xcywf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_x1dwa")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qx8o2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+exclude_parent = false
+hit_from_inside = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

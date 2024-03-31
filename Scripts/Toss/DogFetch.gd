@@ -44,6 +44,7 @@ func FetchingStarted_Handler():
 	#you have to talk to the guy to learn how he used to throw the ball, and do it like him
 	#1 short and high 1 medium and low and 1 long and high
 
+
 func Distance(from:Vector3, to:Vector3):
 	return from - to
 	#return abs(Vector3(from.x - to.x, from.y - to.y, from.z - to.z))
@@ -51,7 +52,6 @@ func Distance(from:Vector3, to:Vector3):
 
 func DogReturnBall():
 	Manager.ReturnBall()
-	
 
 
 func _on_area_3d_body_entered(body):
