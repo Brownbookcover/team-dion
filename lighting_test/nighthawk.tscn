@@ -1,10 +1,10 @@
 [gd_scene load_steps=25 format=3 uid="uid://85a6rupdhemo"]
 
-[ext_resource type="Material" uid="uid://g2mc4xc0y7c2" path="res://lighting_test/glass.tres" id="3_db22y"]
+[ext_resource type="Material" path="res://lighting_test/glass.tres" id="3_db22y"]
 [ext_resource type="PackedScene" uid="uid://5cvfjemb1qjn" path="res://art/genericbuildings.glb" id="4_y6wvf"]
 [ext_resource type="PackedScene" uid="uid://otgjpu41d2m7" path="res://art/glass_bottle.glb" id="5_m65gx"]
 [ext_resource type="PackedScene" uid="uid://ba2vnxtmwpbqf" path="res://art/cornerstore.glb" id="5_p8d66"]
-[ext_resource type="PackedScene" uid="uid://bpt2exvqaq8kc" path="res://lighting_test/streetlamp.tscn" id="5_stpyn"]
+[ext_resource type="PackedScene" path="res://lighting_test/streetlamp.tscn" id="5_stpyn"]
 [ext_resource type="PackedScene" uid="uid://bb6s6ool8bhmc" path="res://art/glass_cup.glb" id="6_aw2q8"]
 [ext_resource type="PackedScene" uid="uid://d01pe4fklbf8n" path="res://art/diner.glb" id="6_bstc8"]
 [ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="6_ftt1a"]

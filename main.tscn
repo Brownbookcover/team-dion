@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=77 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/gamescript.gd" id="1_5rins"]
 [ext_resource type="PackedScene" uid="uid://cxwt1cgnpgn3w" path="res://Scenes/mainMenu.tscn" id="1_sas08"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://veroblbcomij" path="res://art/posed2_man.glb" id="14_5xthw"]
 [ext_resource type="Resource" uid="uid://dm6tc30ymmd6b" path="res://dialog/drunk.dialogue" id="15_o45r3"]
 [ext_resource type="Resource" uid="uid://chajkbierobcs" path="res://dialog/Rob.dialogue" id="16_ltagu"]
-[ext_resource type="Resource" uid="uid://5qspefcn2oyt" path="res://dialog/mike.dialogue" id="16_pvm1j"]
+[ext_resource type="Resource" uid="uid://bc1w0h8v1wnbp" path="res://dialog/mike.dialogue" id="16_pvm1j"]
 [ext_resource type="PackedScene" uid="uid://c0ohqsa5xx06t" path="res://art/bench_man.glb" id="17_oxkaq"]
 [ext_resource type="Script" path="res://dialog/actionables.gd" id="18_cb385"]
 [ext_resource type="Resource" uid="uid://cmkrdbel1vg3l" path="res://dialog/dog.dialogue" id="18_d1rfq"]
@@ -695,16 +695,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mhs0v")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_2uw4c"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_e768l"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fpq7e"]
-height = 0.2
-radius = 0.1
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ainnk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pyxan"]
+size = Vector3(4.65771, 1.58936, 7.10587)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_tkdwd")
@@ -1051,18 +1045,17 @@ transform = Transform3D(-1.02722e-08, 0, -0.235, 0, 0.235, 0, 0.235, 0, -1.02722
 [node name="RigidBody3D" type="RigidBody3D" parent="main/Items"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7587, 0.87024, 8.95655)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="main/Items/RigidBody3D"]
-mesh = SubResource("CylinderMesh_2uw4c")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="main/Items/RigidBody3D"]
-shape = SubResource("CylinderShape3D_fpq7e")
+shape = SubResource("BoxShape3D_e768l")
 
 [node name="Tuna" type="Area3D" parent="main/Items/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0405235, 0.292897, 0.933272)
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="main/Items/RigidBody3D/Tuna"]
-shape = SubResource("CylinderShape3D_ainnk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.933394, 0.115179, 1.80954)
+shape = SubResource("BoxShape3D_pyxan")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="main"]
 stream = ExtResource("28_ldpbx")
