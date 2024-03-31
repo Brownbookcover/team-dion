@@ -742,7 +742,7 @@ navigation_mesh = SubResource("NavigationMesh_yfwmr")
 [node name="Nighthawk" parent="main/NavigationRegion3D" instance=ExtResource("13_cuscx")]
 
 [node name="Player" parent="main" instance=ExtResource("2_rssb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91606, 3.9059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96805, 1.91606, -4.08818)
 
 [node name="StaticBall" parent="main/Player" instance=ExtResource("6_jvhg8")]
 
@@ -769,7 +769,7 @@ mesh = SubResource("CylinderMesh_jvt0p")
 shape = SubResource("CylinderShape3D_xr5qu")
 
 [node name="Dog" parent="main/Light" instance=ExtResource("8_wty0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5397, 1.19977, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5397, 1.6121, -8.2509)
 
 [node name="Dog2" parent="main/Light/Dog" instance=ExtResource("5_mttfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12295, -0.372986, -0.0763021)
