@@ -3,7 +3,7 @@ extends Node
 
 @onready var global_vars = get_node("/root/Globals")
 
-@export var IntroWaitTime:int = 20
+@export var IntroWaitTime:int = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

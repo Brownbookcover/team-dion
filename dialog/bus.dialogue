@@ -1,0 +1,28 @@
+~ start
+
+set Globals.talked_to_bus = true
+Bus Driver: [[Hey, we got a schedule to keep!|We gotta go!|I gotta a job man!]]
+- What's happening?
+	Bus Driver: This is Greenwich Avenue, right? I got some stragglers that need to come with me, you gotta go get em!
+	- What do you mean?
+		Bus Driver: [ Press Q ] to see those waiting on other side. Go talk to em and figure out what's keeping em here!
+- Where are you taking them?
+	Bus Driver: The last stop.
+	- Pennsylvania?
+		Bus Driver: Don't worry, they'll be fine.
+- How did you get this job?
+	Bus Driver: Bad luck and a family connection.
+	- Ah.
+- [ End Conversation ] => END
+Bus Driver: [[Hey, we got a schedule to keep!|We gotta go!|I gotta a job man!]]
+
+=> start
+
+=> END
+
+~ completed
+
+set Globals.talked_to_bus = true
+Bus Driver: Hey, thanks for you help kid. This place might not just go to shit after all if you keep it up.
+Bus Driver: All aboard! Arms and legs inside... not like you can loose em anyways.
+Bus Driver: 

@@ -1,13 +1,20 @@
 ~ start
 Rob: [[Hi|Hello|Howdy]], What may I get for you.
-Rob: Pick.
+~ repeat
+Rob: Pick An Option.
 - A cold beer.
-	Rob: .
+	Rob: You have ID?
 	- I Don't have ID
 		Rob: Well no beer then.
-- Tell me about this place
-	Rob: Greenwhich Ave Bar, We've been serving this area ever since the Repeal of Prohibition dropped.
-- Start again => start
+		=> repeat
+- Tell me about this place.
+	Rob: Greenwhich Ave Bar, We've been serving this area ever since the Repeal of Prohibition dropped. Used to be a diner owned by the mob.
+	=> repeat
+- What is the bus schedule Like?
+	Rob: The bus hasn't come by since I moved here, best get walking.
+	- But the bus is there, says he won't go to Pennsylvania
+			Rob: Are you crazy son, I don't see no bus
+			=> repeat
 - End the conversation => END
-Rob: For more information see the online documentation.
+Rob: See ya [[buddy|pal|friend]].
 => END
