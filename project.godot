@@ -71,4 +71,4 @@ Throw={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialog/main.dialogue", "res://dialog/alec.dialogue", "res://dialog/drunk.dialogue", "res://dialog/dogman.dialogue", "res://dialog/mike.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialog/main.dialogue", "res://dialog/alec.dialogue", "res://dialog/drunk.dialogue", "res://dialog/dogman.dialogue", "res://dialog/mike.dialogue", "res://dialog/dog.dialogue", "res://dialog/dogboy.dialogue")

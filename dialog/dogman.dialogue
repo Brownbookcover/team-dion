@@ -5,21 +5,44 @@ Jack's Friend: [[Hello|This bus would never take this long in Brooklyn]].
 	Jack's Friend: Jack.
 	- Is he the tall man outside?
 		Jack's Friend: Ha, no. The dog. By the bus stop. You know, I never did much of the family stuff. Could never hold it down. But Jack?
-		Jack's Friend: He waited for me. Every day. I'd get off at the stop with a bit of bread, a rind of something. He'd lick every crumb off my hands, every bit of dirt. We'd play fetch. I'd lob that ball not two yards, he'd take off like a rocket.
-		Jack's Friend: Not much, but the most family I ever got. Always there, waiting on me, that dog. Still is, poor bastard.
+		set Globals.has_met_dogman = true
+		Jack's Friend: He waited for me. Every day. I'd get off at the stop with a bit of bread, a rind of something. He'd lick every crumb off my hands, every bit of dirt. When we'd play fetch, I'd lob that ball not two yards, he'd take off like a rocket!
+		Jack's Friend: He's not much, but the most family I ever got. Always there, waiting on me, that dog. Still is, poor bastard.
 		- So when are you getting on the bus?
 			Jack's Friend: When I know that damn dog ain't gonna spend the rest of it's life waiting for some bum who's dead. 
-			- Any ideas on how to get him off that stop?
-				Jack's Friend: Loves fetch. Toss him the ball a couple times. Oh, he loves tuna. But don't tell the other strays that, they'll make fun of him.
-				- And that'll make him stop waiting for you?
-					Jack's Friend: Yeah cause' he'll be waiting you now. Maybe see if anyone wants to take him in.
-					=> start
-		- So Jack was your dog?
-			Jack's Friend: Jack was my friend. Not sure if he was ever anyone's.
-		- [ Back ] => start
+			- I want to know more about Jack. => aboutjack
 - What's it like being dead?
 	Jack's Friend: It's like everything you're used to and nothing that you're not. My knees still hurt.
 - [ End Converstation ] => END
 Jack's Friend: Best of luck.
 
+
 => END
+
+~ aboutjack
+
+Jack's Friend: [[Sure, why not.|Why don't you ask Jack? No, no, I know what he'll say.]]
+- Any ideas on how to get him off that stop?
+		Jack's Friend: Loves fetch. Toss him the ball a couple times. Oh, he loves tuna. But don't tell the other strays that, they'll make fun of him.
+		- And that'll make him stop waiting for you?
+				Jack's Friend: Yeah cause' he'll be following you around! Maybe see if anyone wants to take him in.
+- So Jack was your dog?
+		Jack's Friend: Jack was my friend. Not sure if he ever belonged to anyone.
+- [ Back ] => start
+
+=> aboutjack
+
+~ dogprogress
+
+# triggered by:
+# - Hey, what did want for Jack again?
+# feed him
+# play with him
+# find him a new home
+
+~ dogdone
+
+Jack's Friend: There he goes, that mutt... but let me finish this drink before I get going.
+Jack's Friend: ...No, what am I saying.
+Jack's Friend: Thank you. For Jack.
+Jack's Friend: I'll see you again, friend.

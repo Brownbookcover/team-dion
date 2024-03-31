@@ -1,0 +1,37 @@
+~ start
+
+Boy: [[What?|My ma said not to talk to strangers. Whatever, she says a lot of things|You ever been to Yankee Stadium? My uncle just took me there for a game! It's massive!]]
+- What are you doing out this late?
+	Boy: Relax, it's barely 10. Wait, did my mother send you?
+	- Yup.
+		Boy: Yeah, is that so? What's her name?
+		- Marie
+			Boy: Uh huh, take your funny buisness to New Jersey, pal.
+		- Donna
+			Boy: Uh huh, take your funny buisness to New Jersey, pal.
+		- Margaret.
+			Boy: Uh huh, take your funny buisness to New Jersey, pal.
+		- Herbert Hoover.
+			Boy: [ Chuckling ] ...Hehe, you bastard.
+	- No.
+		Boy: Then take your funny buisness to New Jersey, pal!
+- You like baseball?
+	Boy: You bet! I wanna be a pitcher when I grow up! No one to practice with though...
+if Globals.has_met_dogman:
+	- You want this dog?
+	if not Globals.played_fetch:
+		Boy: What dog? That old mutt over by the bus stop? If he'd stop sitting there all strange!
+	else:
+		Boy: I saw him run when you threw him the ball! I can't believe he's got that all in him... Can you really just give me the dog though?
+		- I'm on good terms with his best friend.
+			Boy: Well, I don't know much of what that means, but thanks, Mister! What's his name?
+			- It's Jack.
+				Boy: [ Embracing Jack ] Hey Jack!
+				Jack: Woof!
+				Boy: I don't know how my mom's gonna feel about this. Whatever, I'm sure she'll come around. Thanks again!
+				set Globals.dog_has_new_owner = true
+- [ End Conversation ] => END
+
+=> start
+
+=> END

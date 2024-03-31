@@ -5,7 +5,7 @@ Alec: [[Hi|Hello|I don't have any money]].
 	Alec: Huh.
 	- Seriously though, why?
 		Alec: What you asking me for? What am I supposed to do? Ask them?
-		- ...Sorry. => start
+		- ...sorry. => start
 		- [ Back ] => start
 	- [ Back ] => start
 - Hey, what's your name?

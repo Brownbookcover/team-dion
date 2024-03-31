@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=30 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/gamescript.gd" id="1_5rins"]
 [ext_resource type="PackedScene" uid="uid://cxwt1cgnpgn3w" path="res://Scenes/mainMenu.tscn" id="1_sas08"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b15sorqd7dt1i" path="res://dialog/main.dialogue" id="6_d2ehk"]
 [ext_resource type="PackedScene" uid="uid://b7s46enwq27" path="res://Scenes/StaticBall.tscn" id="6_jvhg8"]
 [ext_resource type="PackedScene" uid="uid://briwmrhkb4lhu" path="res://Scenes/Dog.tscn" id="8_wty0a"]
+[ext_resource type="PackedScene" uid="uid://bi6o7g3cys80d" path="res://art/items.tscn" id="12_7k1hi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -168,6 +169,8 @@ dialog_start = "alec"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="main/Dark/CharacterBody3D/Actionables2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
 shape = SubResource("BoxShape3D_ng61n")
+
+[node name="Items" parent="main" instance=ExtResource("12_7k1hi")]
 
 [connection signal="game_start" from="MainMenu" to="." method="_on_main_menu_game_start"]
 [connection signal="ball_thrown" from="main/Player" to="main/Light/Dog" method="_on_player_ball_thrown"]

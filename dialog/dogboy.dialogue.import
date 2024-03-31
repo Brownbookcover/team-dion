@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dwvp35dp1ry8l"
+path="res://.godot/imported/dogboy.dialogue-3bce44bf49a6a461f2760dc512b7e175.tres"
+
+[deps]
+
+source_file="res://dialog/dogboy.dialogue"
+dest_files=["res://.godot/imported/dogboy.dialogue-3bce44bf49a6a461f2760dc512b7e175.tres"]
+
+[params]
+
+defaults=true

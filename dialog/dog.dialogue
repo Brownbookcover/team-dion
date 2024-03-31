@@ -1,0 +1,11 @@
+~ start
+
+Jack: Woof!
+- Hello!
+	Jack: Woof!
+	=> start
+- [[Who's a good boy?|What's on your mind, Jack?|]]
+	Jack: Woof!
+	=> start
+
+=> END
