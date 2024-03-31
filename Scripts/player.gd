@@ -28,7 +28,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
 		#print(actionable)
-		if actionable != null or actionable != RayCast3D:
+		if actionable != null and actionable != RayCast3D:
 			input_vector = Vector3.ZERO
 			actionable.action()
 			return

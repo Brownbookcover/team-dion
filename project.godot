@@ -20,12 +20,13 @@ config/icon="res://icon.svg"
 Globals="*res://Scripts/globals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
-[display]
-
-window/stretch/mode="canvas_items"
 [dialogue_manager]
 
 general/wrap_lines=true
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -74,4 +75,4 @@ Throw={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialog/main.dialogue", "res://dialog/alec.dialogue", "res://dialog/drunk.dialogue", "res://dialog/dogman.dialogue", "res://dialog/mike.dialogue", "res://dialog/dog.dialogue", "res://dialog/dogboy.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialog/main.dialogue", "res://dialog/alec.dialogue", "res://dialog/drunk.dialogue", "res://dialog/dogman.dialogue", "res://dialog/mike.dialogue", "res://dialog/dog.dialogue", "res://dialog/dogboy.dialogue", "res://robb.dialogue")

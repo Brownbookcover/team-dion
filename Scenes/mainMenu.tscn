@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cxwt1cgnpgn3w"]
 
-[ext_resource type="Script" path="res://Scenes/mainMenu.gd" id="1_5i15e"]
+[ext_resource type="Script" path="res://Scripts/mainMenu.gd" id="1_5i15e"]
 [ext_resource type="PackedScene" uid="uid://85a6rupdhemo" path="res://lighting_test/nighthawk.tscn" id="2_rb5l3"]
 [ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="3_2iewh"]
 [ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="4_muwrb"]
@@ -36,8 +36,10 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
