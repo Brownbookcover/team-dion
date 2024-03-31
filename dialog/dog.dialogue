@@ -17,4 +17,4 @@ else:
 			Jack: Woof!
 			set Globals.start_tossing = true
 
-=> END
+=> END 
