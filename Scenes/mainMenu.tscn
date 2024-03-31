@@ -74,7 +74,7 @@ grow_vertical = 2
 layout_mode = 2
 theme = ExtResource("6_msncg")
 theme_override_font_sizes/font_size = 61
-text = "Hopper's Avenue"
+text = "Waiting For Jack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
