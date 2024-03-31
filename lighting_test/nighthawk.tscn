@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://85a6rupdhemo"]
 
-[ext_resource type="Material" uid="uid://g2mc4xc0y7c2" path="res://lighting_test/glass.tres" id="3_db22y"]
+[ext_resource type="Material" path="res://lighting_test/glass.tres" id="3_db22y"]
 [ext_resource type="PackedScene" uid="uid://5cvfjemb1qjn" path="res://art/genericbuildings.glb" id="4_y6wvf"]
 [ext_resource type="PackedScene" uid="uid://ba2vnxtmwpbqf" path="res://art/cornerstore.glb" id="5_p8d66"]
 [ext_resource type="PackedScene" uid="uid://d01pe4fklbf8n" path="res://art/diner.glb" id="6_bstc8"]

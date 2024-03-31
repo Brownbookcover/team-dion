@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://fo2uu0obflj7"
-path="res://.godot/imported/nighthawk.glb-8d2f1129fa82527242f5683d4383eb30.scn"
+uid="uid://dyk672oeq7nsq"
+path="res://.godot/imported/diner_interior.glb-28c7c78ce184faa96bd3936715a86628.scn"
 
 [deps]
 
-source_file="res://art/nighthawk.glb"
-dest_files=["res://.godot/imported/nighthawk.glb-8d2f1129fa82527242f5683d4383eb30.scn"]
+source_file="res://art/diner_interior.glb"
+dest_files=["res://.godot/imported/diner_interior.glb-28c7c78ce184faa96bd3936715a86628.scn"]
 
 [params]
 

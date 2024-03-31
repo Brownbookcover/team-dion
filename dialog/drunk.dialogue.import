@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dm6tc30ymmd6b"
+path="res://.godot/imported/drunk.dialogue-954a488d02c92695e545afc865f018cf.tres"
+
+[deps]
+
+source_file="res://dialog/drunk.dialogue"
+dest_files=["res://.godot/imported/drunk.dialogue-954a488d02c92695e545afc865f018cf.tres"]
+
+[params]
+
+defaults=true

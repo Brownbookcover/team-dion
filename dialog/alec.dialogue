@@ -1,0 +1,23 @@
+~ start
+
+Alec: [[Hi|Hello|I don't have any money]].
+- Why aren't there any cars?
+	Alec: Huh.
+	- Seriously though, why?
+		Alec: What you asking me for? What am I supposed to do? Ask them?
+		- ...Sorry. => start
+		- [ Back ] => start
+	- [ Back ] => start
+- Hey, what's your name?
+	Alec: It's not important.
+	- I'd like to know.
+		Alec: As you would.
+		- Tell me!
+			Alec: (With a sigh) It's Dion.
+			 => start
+- Where are we?
+	Alec: Greenwich Village or Purgatory. Take your pick. Better yet, take both.
+- [ End Converstation ] => END
+Alec: You do realize it's rude to just interrogate a stranger, right?
+
+=> END
