@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://briwmrhkb4lhu"]
+
+[ext_resource type="Script" path="res://Scripts/dog.gd" id="1_o2wl5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rvhd5"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n5nxa"]
+radius = 0.25
+height = 1.0
+
+[node name="Dog" type="CharacterBody3D"]
+script = ExtResource("1_o2wl5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_rvhd5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_n5nxa")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

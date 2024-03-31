@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://qpyxd0mao578"]
 
-[ext_resource type="Script" path="res://Scenes/MovingBall.gd" id="1_cpgvl"]
+[ext_resource type="Script" path="res://Scripts/MovingBall.gd" id="1_cpgvl"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xcywf"]
 radius = 0.1

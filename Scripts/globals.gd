@@ -12,7 +12,7 @@ var tried_dying: bool = false
 
 var alec_died: bool = false
 
-var start_tossing: bool = true
+var start_tossing: bool = false
 
 var ball_thrown: bool = false
 

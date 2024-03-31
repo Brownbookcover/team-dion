@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://xsg3yf3hlnic"]
 
-[ext_resource type="Script" path="res://Scenes/Toss2TheTossening.gd" id="1_8t6d4"]
+[ext_resource type="Script" path="res://DepreciatedShit/Toss2TheTossening.gd" id="1_8t6d4"]
 [ext_resource type="PackedScene" uid="uid://b6iq546t8vyef" path="res://Scenes/Player.tscn" id="1_ewemp"]
 [ext_resource type="Script" path="res://Scripts/Ball.gd" id="2_gb0l1"]
-[ext_resource type="Script" path="res://Scenes/Dog.gd" id="2_iewrd"]
+[ext_resource type="Script" path="res://Scripts/Dog.gd" id="2_iewrd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ftvrl"]
 vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
