@@ -27,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://cm048ekt1f6xv" path="res://dialog/Woman.dialogue" id="19_iyh7t"]
 [ext_resource type="Resource" uid="uid://dwvp35dp1ry8l" path="res://dialog/dogboy.dialogue" id="20_02kqe"]
 [ext_resource type="PackedScene" uid="uid://cwsdbh32x2tgm" path="res://art/dogboy.glb" id="21_s61lg"]
-[ext_resource type="Resource" uid="uid://btlcgqjxv4ebo" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
+[ext_resource type="Resource" uid="uid://n6dd7pspm0pk" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
 [ext_resource type="PackedScene" uid="uid://dyk672oeq7nsq" path="res://art/diner_interior.glb" id="25_caxsb"]
 [ext_resource type="PackedScene" uid="uid://dps25jntwdaae" path="res://art/diner_sign.glb" id="26_6dcw1"]
 [ext_resource type="PackedScene" uid="uid://nhffbxy8r3lk" path="res://art/bench.glb" id="27_h5eob"]
@@ -83,12 +83,6 @@ polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Arr
 [sub_resource type="CylinderMesh" id="CylinderMesh_jvt0p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xr5qu"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jxu78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cjikv"]
 size = Vector3(1, 1.21826, 1.3)
@@ -601,6 +595,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8tbi5")
 
+[sub_resource type="BoxMesh" id="BoxMesh_7jck8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvxy5"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pefn5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xr0am"]
@@ -818,7 +816,7 @@ navigation_mesh = SubResource("NavigationMesh_yfwmr")
 [node name="Nighthawk" parent="main/NavigationRegion3D" instance=ExtResource("13_cuscx")]
 
 [node name="Player" parent="main" instance=ExtResource("2_rssb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91606, 3.9059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96805, 1.91606, -4.08818)
 
 [node name="StaticBall" parent="main/Player" instance=ExtResource("6_jvhg8")]
 
@@ -826,7 +824,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91606, 3.9059)
 script = ExtResource("5_44yjj")
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="main/Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59279, -2.24835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.28291, -2.24835)
 disable_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="main/Light/CharacterBody3D2"]
@@ -836,7 +834,7 @@ mesh = SubResource("CapsuleMesh_5lcpp")
 shape = SubResource("CapsuleShape3D_4ssuq")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="main/Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20944, 1.63321, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20944, -1.07351, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="main/Light/StaticBody3D2"]
 mesh = SubResource("CylinderMesh_jvt0p")
@@ -844,23 +842,8 @@ mesh = SubResource("CylinderMesh_jvt0p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/StaticBody3D2"]
 shape = SubResource("CylinderShape3D_xr5qu")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="main/Light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822174, 1.02029, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="main/Light/RigidBody3D2"]
-mesh = SubResource("BoxMesh_7jck8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/RigidBody3D2"]
-shape = SubResource("BoxShape3D_yvxy5")
-
-[node name="Area3D" type="Area3D" parent="main/Light/RigidBody3D2" groups=["DNE"]]
-script = ExtResource("3_cx4ai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/RigidBody3D2/Area3D" groups=["DNE"]]
-shape = SubResource("BoxShape3D_jxu78")
-
 [node name="Dog" parent="main/Light" instance=ExtResource("8_wty0a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62133, 1.19977, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5397, 1.6121, -8.2509)
 
 [node name="Dog2" parent="main/Light/Dog" instance=ExtResource("5_mttfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12295, -0.372986, -0.0763021)
@@ -1022,7 +1005,7 @@ script = ExtResource("5_44yjj")
 is_dark = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="main/Dark"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, 1.03606, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8845, -0.870779, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="main/Dark/RigidBody3D"]
 mesh = SubResource("BoxMesh_7jck8")
@@ -1037,7 +1020,7 @@ script = ExtResource("3_cx4ai")
 shape = SubResource("BoxShape3D_pefn5")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="main/Dark"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.64839, -4)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="main/Dark/CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_xr0am")
@@ -1166,8 +1149,6 @@ autoplay = true
 [connection signal="ball_thrown" from="main/Player" to="main/Light/Dog" method="_on_player_ball_thrown"]
 [connection signal="pause" from="main/Player" to="." method="_on_player_pause"]
 [connection signal="unpause" from="main/Player" to="." method="_on_player_unpause"]
-[connection signal="body_entered" from="main/Light/RigidBody3D2/Area3D" to="main/Light/RigidBody3D2/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="main/Light/RigidBody3D2/Area3D" to="main/Light/RigidBody3D2/Area3D" method="_on_body_exited"]
 [connection signal="ball_found" from="main/Light/Dog" to="main" method="_on_dog_ball_found"]
 [connection signal="player_met" from="main/Light/Dog" to="main" method="_on_dog_player_met"]
 [connection signal="body_entered" from="main/Dark/RigidBody3D/Area3D" to="main/Dark/RigidBody3D/Area3D" method="_on_body_entered"]
