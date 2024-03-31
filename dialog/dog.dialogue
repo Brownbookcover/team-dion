@@ -9,15 +9,9 @@ if Globals.has_tuna == true:
 else:
 	Jack: Woof!
 	- Hello!
-		if Globals.has_fed == false
-			Jack: Woof! *The dog's stomach growls*
-		else:
-			Jack: Woof!
+		Jack: Woof!
 	- [[Who's a good boy?|What's on your mind, Jack?|]]
-		if Globals.has_fed == false
-			Jack: Woof! *The dog's stomach growls*
-		else:
-			Jack: Woof!
+		Jack: Woof!
 	if Globals.has_met_dogman == true and Globals.has_fed == true:
 		- Wanna play fetch?
 			Jack: Woof!
