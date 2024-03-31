@@ -18,6 +18,10 @@ var ball_thrown: bool = false
 
 var catches: int = 0
 
+# Bus
+var talked_to_bus: bool = false
+var all_quests_done: bool = false
+
 # Dog:
 var has_met_dogman: bool = false
 var has_tuna: bool = false

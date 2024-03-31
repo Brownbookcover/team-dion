@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://bg7juw3sfyld1"
+path="res://.godot/imported/bus.dialogue-0dd3564f493e8994e837aad6d0c6daad.tres"
+
+[deps]
+
+source_file="res://dialog/bus.dialogue"
+dest_files=["res://.godot/imported/bus.dialogue-0dd3564f493e8994e837aad6d0c6daad.tres"]
+
+[params]
+
+defaults=true
