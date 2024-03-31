@@ -19,7 +19,7 @@ Boy: [[What?|My ma said not to talk to strangers. Whatever, she says a lot of th
 	Boy: You bet! I wanna be a pitcher when I grow up! No one to practice with though...
 if Globals.has_met_dogman:
 	- You want this dog?
-	if not Globals.played_fetch:
+	if Globals.catches < 3:
 		Boy: What dog? That old mutt over by the bus stop? If he'd stop sitting there all strange!
 	else:
 		Boy: I saw him run when you threw him the ball! I can't believe he's got that all in him... Can you really just give me the dog though?

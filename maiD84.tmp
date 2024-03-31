@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=69 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/gamescript.gd" id="1_5rins"]
 [ext_resource type="PackedScene" uid="uid://cxwt1cgnpgn3w" path="res://Scenes/mainMenu.tscn" id="1_sas08"]
@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://bc0ndwnh144md" path="res://dialog/alec.dialogue" id="13_kwits"]
 [ext_resource type="PackedScene" uid="uid://veroblbcomij" path="res://art/posed2_man.glb" id="14_5xthw"]
 [ext_resource type="Resource" uid="uid://dm6tc30ymmd6b" path="res://dialog/drunk.dialogue" id="15_o45r3"]
-[ext_resource type="Resource" uid="uid://bj27jcpuiqeq7" path="res://dialog/Rob.dialogue" id="16_ltagu"]
 [ext_resource type="Resource" uid="uid://bc1w0h8v1wnbp" path="res://dialog/mike.dialogue" id="16_pvm1j"]
 [ext_resource type="PackedScene" uid="uid://c0ohqsa5xx06t" path="res://art/bench_man.glb" id="17_oxkaq"]
 [ext_resource type="Resource" uid="uid://dd4rfyrup7tn3" path="res://dialog/dog.dialogue" id="18_d1rfq"]
@@ -717,19 +716,6 @@ shape = SubResource("BoxShape3D_jxu78")
 [node name="Dog" parent="main/Light" instance=ExtResource("8_wty0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62133, 1.19977, 0)
 
-[node name="Dog2" parent="main/Light/Dog" instance=ExtResource("5_mttfc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12295, -0.372986, -0.0763021)
-dialog_resource = ExtResource("18_d1rfq")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog/Dog2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
-shape = SubResource("BoxShape3D_cjikv")
-
-[node name="staticbody" type="StaticBody3D" parent="main/Light/Dog/Dog2"]
-
-[node name="stool" parent="main/Light/Dog/Dog2/staticbody" instance=ExtResource("19_4mtly")]
-transform = Transform3D(0.478002, 1.32612e-10, 0, 1.74623e-10, 0.370348, 1.15667e-08, 0, -2.03692e-08, 0.37088, 0, -0.62045, -0.0497597)
-
 [node name="people" type="Node3D" parent="main/Light"]
 
 [node name="posed_stool_man" parent="main/Light/people" instance=ExtResource("10_ehmg3")]
@@ -737,26 +723,6 @@ transform = Transform3D(0.133639, 0, -0.507706, 0, 0.495005, 0, 0.507706, 0, 0.1
 
 [node name="stool_woman2" parent="main/Light/people" instance=ExtResource("11_hunxc")]
 transform = Transform3D(-0.169171, 0, -0.502276, 0, 0.53, 0, 0.502276, 0, -0.169171, 9.6792, 0.328383, 9.53948)
-
-[node name="Rob" parent="main/Light" instance=ExtResource("5_mttfc")]
-transform = Transform3D(-0.229881, 0, -0.973219, 0, 1, 0, 0.973219, 0, -0.229881, 8.02546, 1.5048, 14.1117)
-dialog_resource = ExtResource("16_ltagu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Rob"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
-shape = SubResource("BoxShape3D_cjikv")
-
-[node name="staticbody" type="StaticBody3D" parent="main/Light/Rob"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Rob/staticbody"]
-shape = SubResource("CapsuleShape3D_1evht")
-
-[node name="posed2_man" parent="main/Light/Rob/staticbody" instance=ExtResource("14_5xthw")]
-transform = Transform3D(0.0455942, 0, -0.573189, 0, 0.575, 0, 0.573189, 0, 0.0455942, 0, -0.914772, 0)
-
-[node name="posed2_man_" parent="main/Light/Rob/staticbody/posed2_man" index="0"]
-transform = Transform3D(0, 0.282593, 1.86265e-09, -0.330374, 0, 0, 0, -1.86265e-09, 0.282593, -9.53674e-07, 1.59704, -0.394272)
-mesh = SubResource("ArrayMesh_w31ye")
 
 [node name="Alec" parent="main/Light" instance=ExtResource("5_mttfc")]
 transform = Transform3D(-0.155366, 0, -0.987857, 0, 1, 0, 0.987857, 0, -0.155366, 2.48323, 1.44937, 19.1173)
@@ -841,6 +807,22 @@ transform = Transform3D(0.00740887, 0, -0.45494, 0, 0.455, 0, 0.45494, 0, 0.0074
 
 [node name="bench_man" parent="main/Light/Mike/staticbody/bench_man2" index="0"]
 mesh = SubResource("ArrayMesh_1jwuy")
+
+[node name="Dog2" parent="main/Light" instance=ExtResource("5_mttfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.765597, 0.826784, 14.064)
+dialog_resource = ExtResource("18_d1rfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
+shape = SubResource("BoxShape3D_cjikv")
+
+[node name="staticbody" type="StaticBody3D" parent="main/Light/Dog2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/Dog2/staticbody"]
+shape = SubResource("CapsuleShape3D_1evht")
+
+[node name="stool" parent="main/Light/Dog2/staticbody" instance=ExtResource("19_4mtly")]
+transform = Transform3D(0.478002, 1.32612e-10, 0, 1.74623e-10, 0.370348, 1.15667e-08, 0, -2.03692e-08, 0.37088, 0, -0.62045, -0.0497597)
 
 [node name="Dogboy" parent="main/Light" instance=ExtResource("5_mttfc")]
 transform = Transform3D(-0.155366, 0, -0.987857, 0, 1, 0, 0.987857, 0, -0.155366, 1.59508, 1.44867, 11.8916)
@@ -995,7 +977,6 @@ autoplay = true
 [connection signal="body_entered" from="main/Dark/RigidBody3D/Area3D" to="main/Dark/RigidBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="main/Dark/RigidBody3D/Area3D" to="main/Dark/RigidBody3D/Area3D" method="_on_body_exited"]
 
-[editable path="main/Light/Rob/staticbody/posed2_man"]
 [editable path="main/Light/Alec/staticbody/posed2_man"]
 [editable path="main/Light/Drunk/posed_stool_man2"]
 [editable path="main/Light/Mike/staticbody/bench_man2"]
