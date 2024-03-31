@@ -18,21 +18,13 @@
 [ext_resource type="Resource" uid="uid://bc0ndwnh144md" path="res://dialog/alec.dialogue" id="13_kwits"]
 [ext_resource type="PackedScene" uid="uid://veroblbcomij" path="res://art/posed2_man.glb" id="14_5xthw"]
 [ext_resource type="Resource" uid="uid://dm6tc30ymmd6b" path="res://dialog/drunk.dialogue" id="15_o45r3"]
-<<<<<<< Updated upstream
 [ext_resource type="Resource" uid="uid://chajkbierobcs" path="res://dialog/Rob.dialogue" id="16_ltagu"]
-=======
-[ext_resource type="Resource" uid="uid://bj27jcpuiqeq7" path="res://dialog/Rob.dialogue" id="16_ltagu"]
->>>>>>> Stashed changes
 [ext_resource type="Resource" uid="uid://bc1w0h8v1wnbp" path="res://dialog/mike.dialogue" id="16_pvm1j"]
 [ext_resource type="PackedScene" uid="uid://c0ohqsa5xx06t" path="res://art/bench_man.glb" id="17_oxkaq"]
 [ext_resource type="Script" path="res://dialog/actionables.gd" id="18_cb385"]
-[ext_resource type="Resource" uid="uid://dd4rfyrup7tn3" path="res://dialog/dog.dialogue" id="18_d1rfq"]
+[ext_resource type="Resource" uid="uid://cmkrdbel1vg3l" path="res://dialog/dog.dialogue" id="18_d1rfq"]
 [ext_resource type="PackedScene" uid="uid://bkhffhi6n8nnn" path="res://art/stool.glb" id="19_4mtly"]
-<<<<<<< Updated upstream
 [ext_resource type="Resource" uid="uid://cm048ekt1f6xv" path="res://dialog/Woman.dialogue" id="19_iyh7t"]
-=======
-[ext_resource type="Resource" uid="uid://vof1os7w2382" path="res://dialog/Woman.dialogue" id="19_iyh7t"]
->>>>>>> Stashed changes
 [ext_resource type="Resource" uid="uid://dwvp35dp1ry8l" path="res://dialog/dogboy.dialogue" id="20_02kqe"]
 [ext_resource type="PackedScene" uid="uid://cwsdbh32x2tgm" path="res://art/dogboy.glb" id="21_s61lg"]
 [ext_resource type="Resource" uid="uid://n6dd7pspm0pk" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
@@ -712,6 +704,7 @@ size = Vector3(4.65771, 1.58936, 7.10587)
 script = ExtResource("1_tkdwd")
 
 [node name="Fade_Out" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
