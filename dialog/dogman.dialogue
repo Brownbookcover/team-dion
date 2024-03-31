@@ -1,20 +1,22 @@
 ~ start
-
-Jack's Friend: [[Hello|This bus would never take this long in Brooklyn]].
-- Who are you waiting for?
-	Jack's Friend: Jack.
-	- Is he the tall man outside?
-		Jack's Friend: Ha, no. The dog. By the bus stop. You know, I never did much of the family stuff. Could never hold it down. But Jack?
-		set Globals.has_met_dogman = true
-		Jack's Friend: He waited for me. Every day. I'd get off at the stop with a bit of bread, a rind of something. He'd lick every crumb off my hands, every bit of dirt. When we'd play fetch, I'd lob that ball not two yards, he'd take off like a rocket!
-		Jack's Friend: He's not much, but the most family I ever got. Always there, waiting on me, that dog. Still is, poor bastard.
-		- So when are you getting on the bus?
-			Jack's Friend: When I know that damn dog ain't gonna spend the rest of it's life waiting for some bum who's dead. 
-			- I want to know more about Jack. => aboutjack
-- What's it like being dead?
-	Jack's Friend: It's like everything you're used to and nothing that you're not. My knees still hurt.
-- [ End Converstation ] => END
-Jack's Friend: Best of luck.
+if Globals.dog_has_new_owner == true:
+	=> dogdone
+else:
+	Jack's Friend: [[Hello|This bus would never take this long in Brooklyn]].
+	- Who are you waiting for?
+		Jack's Friend: Jack.
+		- Is he the tall man outside?
+			Jack's Friend: Ha, no. The dog. By the bus stop. You know, I never did much of the family stuff. Could never hold it down. But Jack?
+			set Globals.has_met_dogman = true
+			Jack's Friend: He waited for me. Every day. I'd get off at the stop with a bit of bread, a rind of something. He'd lick every crumb off my hands, every bit of dirt. When we'd play fetch, I'd lob that ball not two yards, he'd take off like a rocket!
+			Jack's Friend: He's not much, but the most family I ever got. Always there, waiting on me, that dog. Still is, poor bastard.
+			- So when are you getting on the bus?
+				Jack's Friend: When I know that damn dog ain't gonna spend the rest of it's life waiting for some bum who's dead. 
+				- I want to know more about Jack. => aboutjack
+	- What's it like being dead?
+		Jack's Friend: It's like everything you're used to and nothing that you're not. My knees still hurt.
+	- [ End Converstation ] => END
+	Jack's Friend: Best of luck.
 
 
 => END
