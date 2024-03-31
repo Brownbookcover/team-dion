@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Fade_Out.gd" id="4_i0k54"]
 [ext_resource type="Script" path="res://Scripts/switch.gd" id="5_44yjj"]
 [ext_resource type="PackedScene" uid="uid://dy6jd6a04dyuy" path="res://dialog/actionables.tscn" id="5_mttfc"]
+[ext_resource type="Script" path="res://TunaLabel.gd" id="6_cg8xe"]
 [ext_resource type="Resource" uid="uid://b15sorqd7dt1i" path="res://dialog/main.dialogue" id="6_d2ehk"]
 [ext_resource type="PackedScene" uid="uid://b7s46enwq27" path="res://Scenes/StaticBall.tscn" id="6_jvhg8"]
 [ext_resource type="PackedScene" uid="uid://briwmrhkb4lhu" path="res://Scenes/Dog.tscn" id="8_wty0a"]
@@ -28,7 +29,7 @@
 [ext_resource type="Resource" uid="uid://cm048ekt1f6xv" path="res://dialog/Woman.dialogue" id="19_iyh7t"]
 [ext_resource type="Resource" uid="uid://dwvp35dp1ry8l" path="res://dialog/dogboy.dialogue" id="20_02kqe"]
 [ext_resource type="PackedScene" uid="uid://cwsdbh32x2tgm" path="res://art/dogboy.glb" id="21_s61lg"]
-[ext_resource type="Resource" uid="uid://btlcgqjxv4ebo" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
+[ext_resource type="Resource" uid="uid://n6dd7pspm0pk" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
 [ext_resource type="PackedScene" uid="uid://dyk672oeq7nsq" path="res://art/diner_interior.glb" id="25_caxsb"]
 [ext_resource type="PackedScene" uid="uid://dps25jntwdaae" path="res://art/diner_sign.glb" id="26_6dcw1"]
 [ext_resource type="PackedScene" uid="uid://nhffbxy8r3lk" path="res://art/bench.glb" id="27_h5eob"]
@@ -814,6 +815,22 @@ text = "press [ space ] to talk to the bus driver"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TunaLabel" type="Label" parent="."]
+visible = false
+offset_left = 495.0
+offset_top = 568.0
+offset_right = 673.0
+offset_bottom = 686.0
+size_flags_horizontal = 4
+theme = ExtResource("34_c50pf")
+theme_override_font_sizes/font_size = 30
+text = "you got tuna!"
+script = ExtResource("6_cg8xe")
+
+[node name="Timer" type="Timer" parent="TunaLabel"]
+wait_time = 3.0
+one_shot = true
+
 [node name="main" type="Node3D" parent="."]
 script = ExtResource("1_5rins")
 
@@ -1161,6 +1178,7 @@ mesh = SubResource("QuadMesh_clwm4")
 skeleton = NodePath("../../..")
 
 [connection signal="game_start" from="MainMenu" to="." method="_on_main_menu_game_start"]
+[connection signal="timeout" from="TunaLabel/Timer" to="TunaLabel" method="_on_timer_timeout"]
 [connection signal="ball_thrown" from="main/Player" to="main/Light/Dog" method="_on_player_ball_thrown"]
 [connection signal="pause" from="main/Player" to="." method="_on_player_pause"]
 [connection signal="unpause" from="main/Player" to="." method="_on_player_unpause"]
