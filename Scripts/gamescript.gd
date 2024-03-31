@@ -8,7 +8,6 @@ extends Node3D
 func _ready():
 	$NavigationRegion3D.bake_navigation_mesh()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Globals.alec_died == true:
