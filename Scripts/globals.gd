@@ -18,6 +18,8 @@ var start_tossing: bool = false
 
 var ball_thrown: bool = false
 
+var bad_ball: bool = false
+
 var catches: int = 0
 
 # Bus

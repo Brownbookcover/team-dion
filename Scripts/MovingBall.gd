@@ -9,6 +9,7 @@ var hit_ground = false
 func _ready():
 	$RayCast3D.enabled = false
 	$Timer.start()
+	$Timeout.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,3 +26,10 @@ func _physics_process(delta):
 
 func _on_timer_timeout():
 	$RayCast3D.enabled = true
+
+
+func _on_timeout_timeout():
+	Globals.start_tossing = true
+	Globals.ball_thrown = false
+	Globals.bad_ball = true
+	queue_free()

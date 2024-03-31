@@ -34,5 +34,9 @@ one_shot = true
 exclude_parent = false
 hit_from_inside = true
 
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]
