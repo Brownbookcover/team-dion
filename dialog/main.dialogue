@@ -1,4 +1,4 @@
-~ alec
+~ start
 
 if Globals.alec_first_talk == false:
 	Alec: My Name is Alec I am sad and dead
@@ -18,4 +18,20 @@ else:
 		- Try dying again but for real this time
 			Alec: Okay here goes....... yep I died
 			set Globals.alec_died = true
+=> END
+
+~ alec
+
+Alec: Go Play Fetch with my dog 3 times RIGHT NOW!
+- Geez Okay
+	Alec: NOOOOOOOWWWWW
+- Fuck you Alec
+	Alec: GOOOOOOOOOOO
+set Globals.start_tossing = true
+
+if Globals.catches >= 3:
+	Alec: You have played with my dog I can now die happy
+	- FUCK YOU
+		Alec: :(
+
 => END

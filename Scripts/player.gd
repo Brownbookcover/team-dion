@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 signal pause
 signal unpause
+signal ball_thrown
 var is_paused: bool = false
 
 const SPEED = 2
@@ -27,18 +28,20 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
 		#print(actionable)
-		if actionable != null:
+		if actionable != null or actionable != RayCast3D:
 			input_vector = Vector3.ZERO
 			actionable.action()
 			return
 			
 	if Input.is_action_just_pressed("Throw"):
-		if Globals.start_tossing == true and Globals.ball_thrown == false:
-			Globals.ball_thrown = true
-			var instance = ball.instantiate()
-			instance.position = actionable_finder.global_position
-			instance.transform.basis = actionable_finder.global_transform.basis
-			get_parent().add_child(instance)
+		if Globals.catches <= 2:
+			if Globals.start_tossing == true and Globals.ball_thrown == false:
+				Globals.ball_thrown = true
+				var instance = ball.instantiate()
+				instance.position = actionable_finder.global_position
+				instance.transform.basis = actionable_finder.global_transform.basis
+				get_parent().add_child(instance)
+				ball_thrown.emit()
 		
 	if event is InputEventMouseButton:
 		#unpause.emit()

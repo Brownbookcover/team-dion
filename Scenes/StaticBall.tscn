@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7s46enwq27"]
+
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_e02aa"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jkwmf"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41chj"]
+radius = 0.1
+
+[node name="StaticBall" type="StaticBody3D"]
+script = ExtResource("1_e02aa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+mesh = SubResource("SphereMesh_jkwmf")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50496)
+shape = SubResource("SphereShape3D_41chj")
