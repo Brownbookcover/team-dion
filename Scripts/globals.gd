@@ -11,3 +11,7 @@ var alec_first_talk: bool = false
 var tried_dying: bool = false
 
 var alec_died: bool = false
+
+var start_tossing: bool = true
+
+var ball_thrown: bool = false

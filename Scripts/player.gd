@@ -13,13 +13,14 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var Light_World_Env = preload("res://lighting_test/light_world_world_env.tres")
 @onready var Dark_World_Env = preload("res://lighting_test/dark_world_world_env.tres")
+var ball = load("res://Scenes/MovingBall.tscn")
 
 @onready var global_vars = get_node("/root/Globals")
 
 @onready var neck:=$Neck
 @onready var camera:=$Neck/Camera3D
 
-@onready var actionable_finder: RayCast3D = $Neck/RayCast3D
+@onready var actionable_finder: RayCast3D = $Neck/Camera3D/RayCast3D
 
 
 func _unhandled_input(event):
@@ -30,7 +31,15 @@ func _unhandled_input(event):
 			input_vector = Vector3.ZERO
 			actionable.action()
 			return
-	
+			
+	if Input.is_action_just_pressed("Throw"):
+		if Globals.start_tossing == true and Globals.ball_thrown == false:
+			Globals.ball_thrown = true
+			var instance = ball.instantiate()
+			instance.position = actionable_finder.global_position
+			instance.transform.basis = actionable_finder.global_transform.basis
+			get_parent().add_child(instance)
+		
 	if event is InputEventMouseButton:
 		#unpause.emit()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

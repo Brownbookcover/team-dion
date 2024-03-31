@@ -1,14 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctn50airj7xqf"]
+[gd_scene load_steps=15 format=3 uid="uid://ctn50airj7xqf"]
 
-[ext_resource type="Script" path="res://Scripts/Toss/Toss.gd" id="1_de3x1"]
 [ext_resource type="Script" path="res://Scripts/Toss/TossManager.gd" id="1_j3nht"]
-[ext_resource type="Script" path="res://Scripts/Toss/DogFetch.gd" id="2_5rns1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1tdm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrsqx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lcmuy"]
+
+[sub_resource type="GDScript" id="GDScript_6aebr"]
+script/source = "extends RigidBody3D
+
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx2w1"]
 
@@ -50,7 +53,7 @@ shape = SubResource("CapsuleShape3D_mrsqx")
 [node name="BallBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615688, -1.1868)
 physics_material_override = SubResource("PhysicsMaterial_lcmuy")
-script = ExtResource("1_de3x1")
+script = SubResource("GDScript_6aebr")
 
 [node name="Area3D" type="Area3D" parent="BallBody3D"]
 transform = Transform3D(0.774529, 0, -0.298338, 0, 0.83, 0, 0.298338, 0, 0.774529, 0, 0, 0)
@@ -65,15 +68,11 @@ shape = SubResource("SphereShape3D_nw1pt")
 mesh = SubResource("SphereMesh_47c2q")
 skeleton = NodePath("../../DogBody3D/Dog")
 
-[node name="DogBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("Manager", "Ball", "DogReturnArea")]
+[node name="DogBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(0.933167, 0, -0.359443, 0, 1, 0, 0.359443, 0, 0.933167, -6.49159, -0.5, -5.54223)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("2_5rns1")
-Manager = NodePath("..")
-Ball = NodePath("../BallBody3D")
-DogReturnArea = NodePath("../DogReturnArea3D")
 
 [node name="Dog" type="MeshInstance3D" parent="DogBody3D"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
