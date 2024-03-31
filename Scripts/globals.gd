@@ -22,7 +22,7 @@ var catches: int = 0
 
 # Bus
 var talked_to_bus: bool = false
-var all_quests_done: bool = false
+var queue_outro: bool = false
 
 # Dog:
 var has_met_dogman: bool = false
