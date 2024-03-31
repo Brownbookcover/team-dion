@@ -21,6 +21,8 @@ func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(delta):
+	if Globals.bad_ball == true:
+		follow_ball = false
 	if Globals.dog_has_new_owner == true:
 		player = get_tree().get_nodes_in_group("dogboy")[0]
 	if follow_ball == true:

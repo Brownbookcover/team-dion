@@ -44,6 +44,7 @@ func _unhandled_input(event):
 				instance.position = actionable_finder.global_position
 				instance.transform.basis = actionable_finder.global_transform.basis
 				get_parent().add_child(instance)
+				Globals.bad_ball = false
 				ball_thrown.emit()
 		
 	if event is InputEventMouseButton:
