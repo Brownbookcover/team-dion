@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://85a6rupdhemo"]
 
-[ext_resource type="Material" path="res://lighting_test/glass.tres" id="3_db22y"]
+[ext_resource type="Material" uid="uid://g2mc4xc0y7c2" path="res://lighting_test/glass.tres" id="3_db22y"]
 [ext_resource type="PackedScene" uid="uid://5cvfjemb1qjn" path="res://art/genericbuildings.glb" id="4_y6wvf"]
 [ext_resource type="PackedScene" uid="uid://ba2vnxtmwpbqf" path="res://art/cornerstore.glb" id="5_p8d66"]
 [ext_resource type="PackedScene" path="res://lighting_test/streetlamp.tscn" id="5_stpyn"]
@@ -147,6 +147,12 @@ transform = Transform3D(0.00560231, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.005602
 
 [node name="genericbuildings14" parent="genericbuidlings/Node3D" instance=ExtResource("4_y6wvf")]
 transform = Transform3D(0.00560231, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.00560231, -9.34602, 0, 64.7841)
+
+[node name="Streetlamp2" parent="genericbuidlings/Node3D/genericbuildings14" instance=ExtResource("5_stpyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8694, 0.299991, 1.60672)
+
+[node name="Streetlamp" parent="genericbuidlings/Node3D/genericbuildings14" instance=ExtResource("5_stpyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8916, 0.549385, -9.42412)
 
 [node name="genericbuildings15" parent="genericbuidlings/Node3D" instance=ExtResource("4_y6wvf")]
 transform = Transform3D(0.00560231, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.00560231, -10.4949, 0.0715561, 187.672)
