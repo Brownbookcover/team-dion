@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cmy8ajoxhcwcx"]
+
+[ext_resource type="FontFile" uid="uid://b8sgmx60fo31s" path="res://themes/Blusvery.otf" id="1_mbc64"]
+[ext_resource type="StyleBox" uid="uid://31hwydrf4co5" path="res://themes/stroke_box_style.tres" id="2_aj8yv"]
+
+[resource]
+Button/fonts/font = ExtResource("1_mbc64")
+Button/styles/disabled = ExtResource("2_aj8yv")
+Button/styles/focus = ExtResource("2_aj8yv")
+Button/styles/hover = ExtResource("2_aj8yv")
+Button/styles/normal = ExtResource("2_aj8yv")
+Button/styles/pressed = ExtResource("2_aj8yv")
+Label/fonts/font = ExtResource("1_mbc64")

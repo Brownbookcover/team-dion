@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxwt1cgnpgn3w"]
+[gd_scene load_steps=9 format=3 uid="uid://cxwt1cgnpgn3w"]
 
 [ext_resource type="Script" path="res://Scenes/mainMenu.gd" id="1_5i15e"]
+[ext_resource type="PackedScene" uid="uid://85a6rupdhemo" path="res://lighting_test/nighthawk.tscn" id="2_rb5l3"]
+[ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="3_2iewh"]
+[ext_resource type="Shader" path="res://lighting_test/nighthawk.gdshader" id="4_muwrb"]
+[ext_resource type="Texture2D" uid="uid://bjo1oktmpu82x" path="res://lighting_test/14428-normal.jpg" id="5_6pmcl"]
+[ext_resource type="Theme" uid="uid://cmy8ajoxhcwcx" path="res://themes/ui_theme.tres" id="6_msncg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqp7a"]
+render_priority = -1
+shader = ExtResource("4_muwrb")
+shader_parameter/distortion_strength = 0.017
+shader_parameter/distortion_scale = 19.421
+shader_parameter/normal_map = ExtResource("5_6pmcl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cjh2r"]
+size = Vector2(4, 4)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,47 +26,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5i15e")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 646.0
-color = Color(0.313726, 0.313726, 0.313726, 1)
-
-[node name="Button" type="Button" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -116.0
-offset_top = -212.0
-offset_right = 116.0
-offset_bottom = -88.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "Start Game"
+grow_vertical = 2
+stretch = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(1920, 1080)
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Nighthawk" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("2_rb5l3")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.85264, 0.0182349, -0.52218, 0, 0.999391, 0.0348995, 0.522499, -0.0297567, 0.852121, -7.87682, 3.045, 29.1321)
+environment = ExtResource("3_2iewh")
+fov = 12.3
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(1.43308, 0, -2.98023e-08, 6.67329e-10, 1, 0, 4.2709e-08, 0, 1, 0, -0.00581467, -0.56827)
+material_override = SubResource("ShaderMaterial_fqp7a")
+mesh = SubResource("QuadMesh_cjh2r")
+skeleton = NodePath("../../Node3D")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -423.5
-offset_top = -435.5
-offset_right = 423.5
-offset_bottom = -54.5
+offset_left = -500.0
+offset_top = -67.5
+offset_right = 500.0
+offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 60
-theme_override_font_sizes/bold_font_size = 60
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-bbcode_enabled = true
-text = "[center]Team Dion (minus Dion) Presents:
-[b] [color=Black] The Darkest Corner of the World [/color] [/b] [/center]"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_msncg")
+theme_override_font_sizes/font_size = 61
+text = "Hopper's Avenue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(116.225, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("6_msncg")
+text = "Start Game"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

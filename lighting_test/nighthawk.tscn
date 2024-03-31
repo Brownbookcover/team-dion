@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://85a6rupdhemo"]
+[gd_scene load_steps=19 format=3 uid="uid://85a6rupdhemo"]
 
 [ext_resource type="Material" uid="uid://g2mc4xc0y7c2" path="res://lighting_test/glass.tres" id="3_db22y"]
 [ext_resource type="PackedScene" uid="uid://5cvfjemb1qjn" path="res://art/genericbuildings.glb" id="4_y6wvf"]
 [ext_resource type="PackedScene" uid="uid://ba2vnxtmwpbqf" path="res://art/cornerstore.glb" id="5_p8d66"]
+[ext_resource type="PackedScene" uid="uid://bpt2exvqaq8kc" path="res://lighting_test/streetlamp.tscn" id="5_stpyn"]
 [ext_resource type="PackedScene" uid="uid://d01pe4fklbf8n" path="res://art/diner.glb" id="6_bstc8"]
+[ext_resource type="Environment" uid="uid://bquv4xy10rwyd" path="res://lighting_test/light_world_world_env.tres" id="6_ftt1a"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uyk7s"]
 _surfaces = [{
@@ -183,12 +185,12 @@ transform = Transform3D(0.00560231, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.005602
 transform = Transform3D(0.00560231, 0, 0.999984, 0, 1, 0, -0.999984, 0, 0.00560231, -9.9703, 0, 190.913)
 
 [node name="Node3D3" type="Node3D" parent="genericbuidlings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.246331, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5854, 0.246331, 0)
 
 [node name="genericbuildings" parent="genericbuidlings/Node3D3" instance=ExtResource("4_y6wvf")]
 
 [node name="genericbuildings2" parent="genericbuidlings/Node3D3" instance=ExtResource("4_y6wvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6379, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.963, 0, 0)
 
 [node name="genericbuildings3" parent="genericbuidlings/Node3D3" instance=ExtResource("4_y6wvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2641, 0, 0)
@@ -253,6 +255,12 @@ shape = SubResource("ConcavePolygonShape3D_ssl0u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diner3/DinerExt/interiorwall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_d8na5")
+
+[node name="Streetlamp" parent="." instance=ExtResource("5_stpyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0145, 0.549385, -9.52625)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_ftt1a")
 
 [editable path="cornerstore"]
 [editable path="diner3"]
