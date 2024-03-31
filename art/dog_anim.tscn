@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://orl7e26uc3ks"]
+
+[ext_resource type="PackedScene" uid="uid://cpk1u5rvgy263" path="res://art/newdog.glb" id="1_aelql"]
+
+[node name="DogAnim" type="Node3D"]
+
+[node name="newdog" parent="." instance=ExtResource("1_aelql")]
+
+[node name="Skeleton3D" parent="newdog/Armature" index="0"]
+bones/1/rotation = Quaternion(2.60681e-07, -2.60819e-08, 0.495742, 0.86847)
+bones/3/rotation = Quaternion(0.284738, -3.57736e-09, -0.545383, 0.788341)
+bones/4/rotation = Quaternion(-0.112407, -0.0219896, -0.169967, 0.978771)
+bones/6/rotation = Quaternion(-0.334511, 3.63412e-09, -0.520774, 0.785428)
+bones/7/rotation = Quaternion(0.125971, 0.0133424, -0.228018, 0.965381)
+bones/8/rotation = Quaternion(0.124888, -1.88241e-05, 0.15131, 0.980565)
+bones/9/rotation = Quaternion(-0.543398, 0.177373, 0.820036, -0.0282621)
+bones/10/rotation = Quaternion(0.241848, -0.0394276, -0.150147, 0.957816)
+bones/12/rotation = Quaternion(0.938772, -0.14694, -0.175792, -0.257318)
+bones/13/rotation = Quaternion(-0.103426, 4.95011e-08, 0.114977, 0.987969)
+bones/14/rotation = Quaternion(-0.181239, -4.5954e-08, -0.353468, 0.917722)
+
+[editable path="newdog"]

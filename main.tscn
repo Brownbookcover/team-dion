@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://85a6rupdhemo" path="res://lighting_test/nighthawk.tscn" id="13_cuscx"]
 [ext_resource type="Resource" uid="uid://bc0ndwnh144md" path="res://dialog/alec.dialogue" id="13_kwits"]
 [ext_resource type="PackedScene" uid="uid://veroblbcomij" path="res://art/posed2_man.glb" id="14_5xthw"]
-[ext_resource type="PackedScene" uid="uid://bbnk452rqbb7e" path="res://art/dog.glb" id="14_v6b7u"]
 [ext_resource type="Resource" uid="uid://dm6tc30ymmd6b" path="res://dialog/drunk.dialogue" id="15_o45r3"]
+[ext_resource type="PackedScene" uid="uid://orl7e26uc3ks" path="res://art/dog_anim.tscn" id="15_uybvs"]
 [ext_resource type="Resource" uid="uid://chajkbierobcs" path="res://dialog/Rob.dialogue" id="16_ltagu"]
 [ext_resource type="Resource" uid="uid://bc1w0h8v1wnbp" path="res://dialog/mike.dialogue" id="16_pvm1j"]
 [ext_resource type="PackedScene" uid="uid://c0ohqsa5xx06t" path="res://art/bench_man.glb" id="17_oxkaq"]
@@ -877,8 +877,8 @@ dialog_resource = ExtResource("18_d1rfq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
 shape = SubResource("BoxShape3D_cjikv")
 
-[node name="dog" parent="main/Light/Dog" instance=ExtResource("14_v6b7u")]
-transform = Transform3D(-0.0377686, 0, -0.428338, 0, 0.43, 0, 0.428338, 0, -0.0377686, 0, -0.447315, -0.026186)
+[node name="DogAnim" parent="main/Light/Dog" instance=ExtResource("15_uybvs")]
+transform = Transform3D(-0.125991, 0, 0.992031, 0, 1, 0, -0.992031, 0, -0.125991, 0, -0.522758, 0)
 
 [node name="people" type="Node3D" parent="main/Light"]
 
