@@ -2,7 +2,7 @@ extends Node
 
 var dark_world: bool = false
 
-var IsIntro: bool = false
+var switchLock: bool = false
 
 var can_switch: bool = true
 
@@ -26,4 +26,4 @@ var has_tuna: bool = false
 var has_fed: bool = false
 var played_fetch: bool = false
 var dog_has_new_owner: bool = false
-var ended_dogman_quest: bool = true
+var ended_dogman_quest: bool = false

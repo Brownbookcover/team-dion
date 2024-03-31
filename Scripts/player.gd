@@ -24,7 +24,7 @@ var ball = load("res://Scenes/MovingBall.tscn")
 @onready var actionable_finder: RayCast3D = $Neck/Camera3D/RayCast3D
 
 
-func _unhandled_input(event):
+func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
 		if actionable != null and actionable.name == "Tuna":

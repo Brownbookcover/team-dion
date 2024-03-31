@@ -12,7 +12,7 @@ func _process(delta):
 	pass
 
 func _on_body_entered(body):
-	if global_vars.IsIntro:
+	if global_vars.switchLock:
 		return
 	if body.is_in_group("player"):
 		#print("cant switch")
@@ -20,7 +20,7 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	if global_vars.IsIntro:
+	if global_vars.switchLock:
 		return
 	if body.is_in_group("player"):
 		#print("can switch")

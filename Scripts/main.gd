@@ -5,7 +5,6 @@ extends Node
 
 @export var IntroWaitTime:int = 20
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MainMenu.visible = true
@@ -14,7 +13,7 @@ func _ready():
 	
 
 func enterIntro():
-	global_vars.IsIntro = true
+	global_vars.switchLock = true
 	global_vars.can_switch = false
 	print_debug("entered intro")
 
@@ -22,25 +21,32 @@ func enterIntro():
 var introTimer: float = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if global_vars.IsIntro and introTimer > IntroWaitTime:
+	if global_vars.switchLock and introTimer > IntroWaitTime:
 		exitIntro()
-	elif global_vars.IsIntro:
+	elif global_vars.switchLock:
 		introTimer+=delta
+	
+	if global_vars.ended_dogman_quest == true:
+		outro()
 		
 func exitIntro():
-	global_vars.IsIntro = false
+	global_vars.switchLock = false
 	global_vars.can_switch = true
 	global_vars.dark_world = true
 	print_debug("exited intro")
 
+func outro():
+	global_vars.dark_world = true
+	global_vars.switchLock = true
+	global_vars.can_switch = false
+	$Fade_Out.transition()
 
 func _on_main_menu_game_start():
 	$MainMenu.visible = false
 	$PauseMenu.visible = false
 	$main.visible = true
-
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	enterIntro()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_player_pause():
 	$MainMenu.visible = false

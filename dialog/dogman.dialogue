@@ -48,3 +48,4 @@ Jack's Friend: There he goes, that mutt... but let me finish this drink before I
 Jack's Friend: ...No, what am I saying.
 Jack's Friend: Thank you. For Jack.
 Jack's Friend: I'll see you again, friend.
+set Globals.ended_dogman_quest = true
