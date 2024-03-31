@@ -28,5 +28,6 @@ set Globals.talked_to_bus = true
 Bus Driver: All aboard! Arms and legs inside... not like you can loose em anyways.
 Bus Driver: Hey, thanks for you help kid. This place might not just go to shit after all if you keep it up.
 Bus Driver: Well, I'll see when I see you. Don't count the days, though.
-	
+set Globals.queue_outro = true
+
 => END

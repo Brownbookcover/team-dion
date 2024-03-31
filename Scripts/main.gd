@@ -26,7 +26,7 @@ func _process(delta):
 	elif global_vars.switchLock:
 		introTimer+=delta
 	
-	if global_vars.ended_dogman_quest == true:
+	if global_vars.queue_outro == true:
 		outro()
 		
 func exitIntro():
@@ -36,10 +36,17 @@ func exitIntro():
 	print_debug("exited intro")
 
 func outro():
+	Globals.queue_outro = false
+	Globals.bus_move = true
 	global_vars.dark_world = true
 	global_vars.switchLock = true
 	global_vars.can_switch = false
 	$Fade_Out.transition()
+	$main/Camera3D.make_current()
+	#$main/Player.global_position = Vector3(-25.6, 1.6, -2.4)
+	#$main/Player.rotation = Vector3.ZERO
+	#$main/Player/Neck.rotation = Vector3.ZERO
+	#$main/Player/Neck/Camera3D.rotation = Vector3.ZERO
 
 func _on_main_menu_game_start():
 	$MainMenu.visible = false
