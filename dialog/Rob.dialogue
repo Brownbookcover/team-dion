@@ -1,0 +1,13 @@
+~ start
+Rob: [[Hi|Hello|Howdy]], What may I get for you.
+Rob: Pick.
+- A cold beer.
+	Rob: .
+	- I Don't have ID
+		Rob: Well no beer then.
+- Tell me about this place
+	Rob: Greenwhich Ave Bar, We've been serving this area ever since the Repeal of Prohibition dropped.
+- Start again => start
+- End the conversation => END
+Rob: For more information see the online documentation.
+=> END

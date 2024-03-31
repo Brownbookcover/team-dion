@@ -2,6 +2,8 @@ extends Node
 
 var dark_world: bool = false
 
+var IsIntro: bool = false
+
 var can_switch: bool = true
 
 var in_dialog: bool = false

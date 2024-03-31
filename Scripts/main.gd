@@ -3,8 +3,7 @@ extends Node
 
 @onready var global_vars = get_node("/root/Globals")
 
-var IsIntro:bool = false
-@export var IntroWaitTime:int = 30
+@export var IntroWaitTime:int = 20
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +14,7 @@ func _ready():
 	
 
 func enterIntro():
-	IsIntro = true
+	global_vars.IsIntro = true
 	global_vars.can_switch = false
 	print_debug("entered intro")
 
@@ -23,13 +22,13 @@ func enterIntro():
 var introTimer: float = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if IsIntro and introTimer > IntroWaitTime:
+	if global_vars.IsIntro and introTimer > IntroWaitTime:
 		exitIntro()
-	elif IsIntro:
+	elif global_vars.IsIntro:
 		introTimer+=delta
 		
 func exitIntro():
-	IsIntro = false
+	global_vars.IsIntro = false
 	global_vars.can_switch = true
 	global_vars.dark_world = true
 	print_debug("exited intro")
