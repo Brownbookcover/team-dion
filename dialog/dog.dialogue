@@ -1,13 +1,20 @@
 ~ start
-
-Jack: Woof!
-- Hello!
+if Globals.has_tuna == true:
 	Jack: Woof!
-- [[Who's a good boy?|What's on your mind, Jack?|]]
-	Jack: Woof!
-if Globals.has_met_dogman == true and Globals.has_fed == true:
-	- Wanna play fetch?
+	- Give Jack the Tuna
 		Jack: Woof!
-		set Globals.start_tossing = true
+		set Globals.has_fed = true
+		set Globals.has_tuna = false
+
+else:
+	Jack: Woof!
+	- Hello!
+		Jack: Woof!
+	- [[Who's a good boy?|What's on your mind, Jack?|]]
+		Jack: Woof!
+	if Globals.has_met_dogman == true and Globals.has_fed == true:
+		- Wanna play fetch?
+			Jack: Woof!
+			set Globals.start_tossing = true
 
 => END

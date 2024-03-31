@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=73 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/gamescript.gd" id="1_5rins"]
 [ext_resource type="PackedScene" uid="uid://cxwt1cgnpgn3w" path="res://Scenes/mainMenu.tscn" id="1_sas08"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cwsdbh32x2tgm" path="res://art/dogboy.glb" id="21_s61lg"]
 [ext_resource type="Resource" uid="uid://n6dd7pspm0pk" path="res://dialog/dogman.dialogue" id="23_a2mg5"]
 [ext_resource type="PackedScene" uid="uid://dyk672oeq7nsq" path="res://art/diner_interior.glb" id="25_caxsb"]
+[ext_resource type="Script" path="res://Scripts/dogman.gd" id="25_dkie5"]
 [ext_resource type="PackedScene" uid="uid://dps25jntwdaae" path="res://art/diner_sign.glb" id="26_6dcw1"]
 [ext_resource type="PackedScene" uid="uid://nhffbxy8r3lk" path="res://art/bench.glb" id="27_h5eob"]
 [ext_resource type="AudioStream" uid="uid://catd108gy3ymi" path="res://music/hopper.mp3" id="28_ldpbx"]
@@ -656,6 +657,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mhs0v")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_y5f2p"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_661jf"]
+height = 0.2
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cqthg"]
+
 [node name="Node" type="Node"]
 script = ExtResource("1_tkdwd")
 
@@ -821,7 +833,7 @@ transform = Transform3D(0.00740887, 0, -0.45494, 0, 0.455, 0, 0.45494, 0, 0.0074
 [node name="bench_man" parent="main/Light/Mike/staticbody/bench_man2" index="0"]
 mesh = SubResource("ArrayMesh_1jwuy")
 
-[node name="Dogboy" parent="main/Light" instance=ExtResource("5_mttfc")]
+[node name="Dogboy" parent="main/Light" groups=["dogboy"] instance=ExtResource("5_mttfc")]
 transform = Transform3D(-0.155366, 0, -0.987857, 0, 1, 0, 0.987857, 0, -0.155366, 1.59508, 1.44867, 11.8916)
 dialog_resource = ExtResource("20_02kqe")
 
@@ -883,6 +895,7 @@ shape = SubResource("BoxShape3D_cjikv")
 
 [node name="dogman" parent="main/Dark/Dogman" instance=ExtResource("10_ehmg3")]
 transform = Transform3D(0.225721, 0, -0.473999, 0, 0.495, 0, -0.473999, 0, -0.225721, 0.0150108, -1.19068, 0.781824)
+script = ExtResource("25_dkie5")
 
 [node name="stool_man" parent="main/Dark/Dogman/dogman/Man" index="0"]
 transform = Transform3D(0, 0.282593, 1.49012e-08, -0.330375, 0, 0, 0, -1.49012e-08, 0.282593, 0, 0.101999, -0.39427)
@@ -958,6 +971,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45561, 0, 2.76293)
 
 [node name="bench" parent="main/Items" instance=ExtResource("27_h5eob")]
 transform = Transform3D(-1.02722e-08, 0, -0.235, 0, 0.235, 0, 0.235, 0, -1.02722e-08, -9.49084, 1.03902, -6.74779)
+
+[node name="Tuna" type="RigidBody3D" parent="main/Items"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2685, 1.08735, 9.01309)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="main/Items/Tuna"]
+mesh = SubResource("CylinderMesh_y5f2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Items/Tuna"]
+shape = SubResource("CylinderShape3D_661jf")
+
+[node name="Tuna" type="Area3D" parent="main/Items/Tuna"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/Items/Tuna/Tuna"]
+shape = SubResource("CylinderShape3D_cqthg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="main"]
 stream = ExtResource("28_ldpbx")

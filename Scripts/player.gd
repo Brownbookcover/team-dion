@@ -27,8 +27,11 @@ var ball = load("res://Scenes/MovingBall.tscn")
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionable = actionable_finder.get_collider()
-		#print(actionable)
-		if actionable != null and actionable != RayCast3D:
+		if actionable != null and actionable.name == "Tuna":
+			var tunacan = actionable.get_parent()
+			tunacan.queue_free()
+			Globals.has_tuna = true
+		elif actionable != null and actionable != RayCast3D:
 			input_vector = Vector3.ZERO
 			actionable.action()
 			return
