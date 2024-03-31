@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bi6o7g3cys80d"]
+[gd_scene load_steps=47 format=3 uid="uid://bi6o7g3cys80d"]
 
 [ext_resource type="PackedScene" uid="uid://85a6rupdhemo" path="res://lighting_test/nighthawk.tscn" id="1_pmo21"]
 [ext_resource type="PackedScene" uid="uid://dyk672oeq7nsq" path="res://art/diner_interior.glb" id="2_pta4d"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://dd4rfyrup7tn3" path="res://dialog/dog.dialogue" id="12_x33ns"]
 [ext_resource type="PackedScene" uid="uid://nhffbxy8r3lk" path="res://art/bench.glb" id="12_yllmf"]
 [ext_resource type="Resource" uid="uid://dwvp35dp1ry8l" path="res://dialog/dogboy.dialogue" id="13_au7ep"]
+[ext_resource type="PackedScene" uid="uid://cwsdbh32x2tgm" path="res://art/dogboy.glb" id="15_jp2hw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cjikv"]
 size = Vector3(1, 1, 1.3)
@@ -713,7 +714,6 @@ bones/5/rotation = Quaternion(-0.399455, -0.0508453, 0.104687, 0.909335)
 bones/6/rotation = Quaternion(0.0244008, 0.000146254, 0.00599061, 0.999684)
 bones/8/rotation = Quaternion(0.751539, 0.0323093, 0.0626304, 0.655914)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.0186284, -0.000287036, 0.0154014, 0.999708)
 bones/11/rotation = Quaternion(0.147222, -6.83978e-12, 1.75722e-07, 0.989103)
 bones/12/rotation = Quaternion(0.00783295, 0.00127328, -0.02298, 0.999704)
@@ -780,8 +780,8 @@ shape = SubResource("BoxShape3D_cjikv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Light/Dogboy/staticbody"]
 shape = SubResource("CapsuleShape3D_1evht")
 
-[node name="posed2_man" parent="Light/Dogboy/staticbody" instance=ExtResource("8_n1sky")]
-transform = Transform3D(0.0455942, 0, -0.573189, 0, 0.40575, 0, 0.573189, 0, 0.0455942, 0, -0.914772, 0)
+[node name="dogboy2" parent="Light/Dogboy/staticbody" instance=ExtResource("15_jp2hw")]
+transform = Transform3D(0.457986, 0, -0.503295, 0, 0.603655, 0, 0.625689, 0, 0.368397, 0, -0.978913, 0)
 
 [node name="Dark" type="Node3D" parent="."]
 
@@ -812,7 +812,6 @@ bones/5/rotation = Quaternion(-0.399455, -0.0508453, 0.104687, 0.909335)
 bones/6/rotation = Quaternion(0.0244008, 0.000146254, 0.00599061, 0.999684)
 bones/8/rotation = Quaternion(0.751539, 0.0323093, 0.0626304, 0.655914)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.0186284, -0.000287036, 0.0154014, 0.999708)
 bones/11/rotation = Quaternion(0.147222, -6.83978e-12, 1.75722e-07, 0.989103)
 bones/12/rotation = Quaternion(0.00783295, 0.00127328, -0.02298, 0.999704)
