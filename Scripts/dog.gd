@@ -40,8 +40,9 @@ func _physics_process(delta):
 		dog_pos = global_transform.origin
 		var distance = player_pos.distance_to(dog_pos)
 		if distance < 1:
-			follow_player = false
 			player_met.emit()
+			if Globals.catches < 3:
+				follow_player = false
 			return
 		$NavigationAgent3D.set_target_position(player.global_transform.origin)
 		var next_point = $NavigationAgent3D.get_next_path_position()
