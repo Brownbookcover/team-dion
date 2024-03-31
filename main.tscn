@@ -1,14 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://b55lq43ap4vmb"]
+[gd_scene load_steps=30 format=3 uid="uid://b55lq43ap4vmb"]
 
 [ext_resource type="Script" path="res://Scripts/gamescript.gd" id="1_5rins"]
 [ext_resource type="PackedScene" uid="uid://cxwt1cgnpgn3w" path="res://Scenes/mainMenu.tscn" id="1_sas08"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_tkdwd"]
 [ext_resource type="PackedScene" uid="uid://b6iq546t8vyef" path="res://Scenes/Player.tscn" id="2_rssb4"]
-[ext_resource type="PackedScene" uid="uid://ikdd0psv07h6" path="res://Scenes/pauseMenu.tscn" id="3_3gdff"]
+[ext_resource type="PackedScene" uid="uid://ikdd0psv07h6" path="res://DepreciatedShit/pauseMenu.tscn" id="3_3gdff"]
 [ext_resource type="Script" path="res://Scripts/areadetection.gd" id="3_cx4ai"]
 [ext_resource type="Script" path="res://Scripts/switch.gd" id="5_44yjj"]
 [ext_resource type="PackedScene" uid="uid://dy6jd6a04dyuy" path="res://dialog/actionables.tscn" id="5_mttfc"]
 [ext_resource type="Resource" uid="uid://b15sorqd7dt1i" path="res://dialog/main.dialogue" id="6_d2ehk"]
+[ext_resource type="PackedScene" uid="uid://b7s46enwq27" path="res://Scenes/StaticBall.tscn" id="6_jvhg8"]
+[ext_resource type="PackedScene" uid="uid://briwmrhkb4lhu" path="res://Scenes/Dog.tscn" id="8_wty0a"]
+[ext_resource type="PackedScene" uid="uid://bi6o7g3cys80d" path="res://art/items.tscn" id="12_7k1hi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5fif8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +25,10 @@ background_mode = 2
 sky = SubResource("Sky_7fyis")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yfwmr"]
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u5gxk"]
 size = Vector3(20, 1, 20)
@@ -65,12 +72,15 @@ script = ExtResource("1_5rins")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="main"]
 environment = SubResource("Environment_ta0qc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="main"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="main"]
+navigation_mesh = SubResource("NavigationMesh_yfwmr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="main/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="main/NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="main/NavigationRegion3D/StaticBody3D"]
 mesh = SubResource("BoxMesh_u5gxk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="main/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main/NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_asxfx")
 
 [node name="Label" type="Label" parent="main"]
@@ -81,6 +91,8 @@ text = "Light"
 
 [node name="Player" parent="main" instance=ExtResource("2_rssb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91606, 3.9059)
+
+[node name="StaticBall" parent="main/Player" instance=ExtResource("6_jvhg8")]
 
 [node name="Light" type="Node3D" parent="main"]
 script = ExtResource("5_44yjj")
@@ -119,6 +131,9 @@ script = ExtResource("3_cx4ai")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="main/Light/RigidBody3D2/Area3D" groups=["DNE"]]
 shape = SubResource("BoxShape3D_jxu78")
 
+[node name="Dog" parent="main/Light" instance=ExtResource("8_wty0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62133, 1.19977, 0)
+
 [node name="Dark" type="Node3D" parent="main"]
 script = ExtResource("5_44yjj")
 is_dark = true
@@ -155,10 +170,15 @@ dialog_start = "alec"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
 shape = SubResource("BoxShape3D_ng61n")
 
+[node name="Items" parent="main" instance=ExtResource("12_7k1hi")]
+
 [connection signal="game_start" from="MainMenu" to="." method="_on_main_menu_game_start"]
+[connection signal="ball_thrown" from="main/Player" to="main/Light/Dog" method="_on_player_ball_thrown"]
 [connection signal="pause" from="main/Player" to="." method="_on_player_pause"]
 [connection signal="unpause" from="main/Player" to="." method="_on_player_unpause"]
 [connection signal="body_entered" from="main/Light/RigidBody3D2/Area3D" to="main/Light/RigidBody3D2/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="main/Light/RigidBody3D2/Area3D" to="main/Light/RigidBody3D2/Area3D" method="_on_body_exited"]
+[connection signal="ball_found" from="main/Light/Dog" to="main" method="_on_dog_ball_found"]
+[connection signal="player_met" from="main/Light/Dog" to="main" method="_on_dog_player_met"]
 [connection signal="body_entered" from="main/Dark/RigidBody3D/Area3D" to="main/Dark/RigidBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="main/Dark/RigidBody3D/Area3D" to="main/Dark/RigidBody3D/Area3D" method="_on_body_exited"]

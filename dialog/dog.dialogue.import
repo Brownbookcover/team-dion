@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dd4rfyrup7tn3"
+path="res://.godot/imported/dog.dialogue-10a57eca5545e0a1ec367193b0805eb9.tres"
+
+[deps]
+
+source_file="res://dialog/dog.dialogue"
+dest_files=["res://.godot/imported/dog.dialogue-10a57eca5545e0a1ec367193b0805eb9.tres"]
+
+[params]
+
+defaults=true

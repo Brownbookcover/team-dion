@@ -40,8 +40,8 @@ mesh = SubResource("QuadMesh_44d8l")
 skeleton = NodePath("../../..")
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36207, 0)
-target_position = Vector3(0, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36207, -0.807759)
+target_position = Vector3(0, 0, -1)
 collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true

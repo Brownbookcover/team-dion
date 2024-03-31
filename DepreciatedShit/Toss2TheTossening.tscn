@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://xsg3yf3hlnic"]
+
+[ext_resource type="Script" path="res://DepreciatedShit/Toss2TheTossening.gd" id="1_8t6d4"]
+[ext_resource type="PackedScene" uid="uid://b6iq546t8vyef" path="res://Scenes/Player.tscn" id="1_ewemp"]
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="2_gb0l1"]
+[ext_resource type="Script" path="res://Scripts/Dog.gd" id="2_iewrd"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ftvrl"]
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_edysc"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e862j"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gb5in"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4ihm3"]
+radius = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ufo81"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mmq46"]
+radius = 0.25
+height = 1.0
+
+[node name="Toss2TheTossening" type="Node3D"]
+script = ExtResource("1_8t6d4")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ftvrl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_edysc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_e862j")
+
+[node name="Player" parent="." instance=ExtResource("1_ewemp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59213, 6.21722)
+
+[node name="Ball" type="StaticBody3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.504748)
+script = ExtResource("2_gb0l1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+mesh = SubResource("SphereMesh_gb5in")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50496)
+shape = SubResource("SphereShape3D_4ihm3")
+
+[node name="Dog" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02281, 0)
+script = ExtResource("2_iewrd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Dog"]
+mesh = SubResource("CapsuleMesh_ufo81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog"]
+shape = SubResource("CapsuleShape3D_mmq46")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Dog"]
+
+[connection signal="ball_thrown" from="Player" to="Dog" method="_on_player_ball_thrown"]
+[connection signal="ball_found" from="Dog" to="." method="_on_dog_ball_found"]
+[connection signal="player_met" from="Dog" to="." method="_on_dog_player_met"]
